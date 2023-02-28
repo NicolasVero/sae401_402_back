@@ -13,7 +13,7 @@
         }
 
         html, body {
-            background-color: black;
+            /* background-color: black; */
         }
 
         div {
@@ -78,18 +78,31 @@
         // $rf->viewAllFiles();
         $pages = $rf->getHTMLFiles();
         
+        include 'connect_bdd.php';
+
         foreach ($pages as $page) {
-            drawPageDiv($page);
+            drawPageDiv($page, $db);
         }
 
 
 
-        function drawPageDiv($page) {
+        function drawPageDiv($page, $db) {
+
+            $schema = "SELECT id, affiche FROM pages WHERE tiny_url = ?";
+            $get_id = $db -> prepare($schema);
+            $get_id -> execute(array($page));  
+
+            $page_id = $get_id -> fetch();
+
+            echo $page_id['id'];
+            print_r($page_id);
+
+            $icone = $page_id['affiche'] == 1 ? "<img src='img/invisible.png' title='rendre invisible'>" : "<img src='img/visible.png' title='rendre visible'>";
 
             echo "<div class='page'>";
             echo "<h3><a href='pages/$page' target='_blank'>$page</a></h3>";
             echo "<div class='page-option'>";
-            echo "<span class='modif'><a href='changeAffiche.php?page=$page'><img src='img/Modifier.png'></a></span>";
+            echo "<span class='modif'><a href='changeAffiche.php?page=" . $page_id['id'] . "'>$icone</a></span>";
             echo "<span class='modif'><a href='#'><img src='img/Modifier.png'></a></span>";
             echo "<span class='supp'><a href='deletePage.php?page=$page'><img src='img/Supprimer.png'></a></span>";
             echo "</div>";

@@ -1,14 +1,10 @@
 <?php
 
     include 'connect_bdd.php';
-
-    // Savoir si page deja affichée ou non 
-    // SELECT ....
-
-
-    $schema = "UPDATE pages SET affiche =  WHERE tiny_url = ?";
+    
+    $schema = "UPDATE pages SET affiche = abs(affiche - 1) WHERE id = ?";
     $reserver = $db -> prepare($schema);
-    $reserver -> execute(array($_GET['pages']));  
+    $reserver -> execute(array($_GET['page']));  
 
     header("Location: accueil.php");
 
