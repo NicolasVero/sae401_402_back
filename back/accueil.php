@@ -67,12 +67,13 @@
     
     <div> 
         <a href="creationPages.php"><p>Créer une nouvelle page</p></a>
+        <a href="televerserPage.php"><p>Téléverser une nouvelle page</p></a>
     </div>
 
 
     <?php
     
-        include 'ReadFiles.php';
+        include 'classes/ReadFiles.php';
         
         $rf = new ReadFiles();
         // $rf->viewAllFiles();
@@ -102,8 +103,9 @@
             echo "<div class='page'>";
             echo "<h3><a href='pages/$page' target='_blank'>$page</a></h3>";
             echo "<div class='page-option'>";
-            echo "<span class='modif'><a href='changeAffiche.php?page=" . $page_id['id'] . "'>$icone</a></span>";
+            echo "<span class='affiche'><a href='changeAffiche.php?page=" . $page_id['id'] . "'>$icone</a></span>";
             echo "<span class='modif'><a href='#'><img src='img/Modifier.png'></a></span>";
+            echo "<span class='telecharger'><a href='pages/$page' download='PAGE : $page'><img src='img/download.png'></a></span>";
             echo "<span class='supp'><a href='deletePage.php?page=$page'><img src='img/Supprimer.png'></a></span>";
             echo "</div>";
             echo "</div>";

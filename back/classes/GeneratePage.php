@@ -1,7 +1,5 @@
 <?php
 
-    // include 'ManageImages.php';
-
     final class GeneratePage {
 
         const PATH = './pages/';

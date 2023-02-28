@@ -12,35 +12,15 @@
 
         <script src="tinymce/tinymce.min.js" ></script>
 
-
-
-
         <main>
 
-            <script>
-                tinymce.init({ 
-                    selector:'textarea#MyTextArea',
-                    promotion: false,
-                    skin: 'oxide-dark',
-                    content_css: 'writer',
-                    placeholder: "Saisissez ici votre texte et mettez-le en forme !",
-                    language: 'fr_FR',
-                    plugins: 'advlist autolink link image lists charmap preview',
-                    external_plugins: {
-                        'maths': 'http://www.maths.com/plugin.min.js'
-                    },
-                    images_upload_url: './tinymce/postAcceptor.php',
-                    images_upload_base_path: '/images',
-                    images_file_types: 'jpg,svg,webp,png'
-                });
-            </script>
+            <script src="init_tinymce.js"></script>
 
-
-        <form action='traitement.php' method='POST' enctype="multipart/form-data">
-            <input type="text" name="titre" id="titre" placeholder="Titre de la page" required/>
-            <textarea name='textarea' id='MyTextArea'></textarea>
-            <input type="submit" value="envoyer">
-        </form>
+            <form action='traitement.php' method='POST' enctype="multipart/form-data">
+                <input type="text" name="titre" id="titre" placeholder="Titre de la page" required/>
+                <textarea name='textarea' id='MyTextArea'></textarea>
+                <input type="submit" value="envoyer">
+            </form>
 
         </main>
     </body>

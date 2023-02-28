@@ -11,6 +11,7 @@
         private string $url;
         private string $tiny_url;
         private string $date;
+        private int $id_auteur;
         private bool $estAffiche;
 
         public function __construct(string $titre, string $texte, string $html, string $url, string $style) {
@@ -22,6 +23,7 @@
             $this->url        = self::PATH . $url;
             $this->tiny_url   = $url;
             $this->date       = Page::donnerDate();
+            $this->id_auteur  = 0;
             $this->estAffiche = true;
         }
 
