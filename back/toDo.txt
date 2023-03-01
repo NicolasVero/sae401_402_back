@@ -1,7 +1,7 @@
-° si page créée même nom qu'une autre --> donner autre nom ( exemple => exemple(1) )
-° gerer pages actus et pages projets 
-° voir problemes upload images 
-° demander mdp quand suppression d'une page 
+//? ° si page créée même nom qu'une autre --> donner autre nom ( exemple => exemple(1) )
+// ° gerer pages actus et pages projets 
+// ° voir problemes upload images 
+// ° demander mdp quand suppression d'une page 
 ° permettre modification d'une page existante 
 ° permettre televersement pages externes 
 ° permettre de changer la feuille de style 

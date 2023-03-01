@@ -2,13 +2,9 @@
 
 
     if(!isset($_POST['textarea'])) header('Location: accueil.php');
-        
-        
-    // echo htmlentities($_POST['textarea']);
-    // echo htmlentities($_POST['titre']);
-    
+           
     include '../classes/GeneratePage.php';
-    include '../classes/ReadFiles.php';
+    // include '../classes/ReadFiles.php';
     include '../classes/Page.php';
 
     $gp = new GeneratePage($_POST['titre'], $_POST['textarea']);
@@ -18,13 +14,6 @@
     print_r($_POST);
 
     $p->remplir_bdd();
-
-    $rf = new ReadFiles();
-    $rf->viewHTMLFiles();
-    // $rf->viewAllFiles();
-
-    // $files = $rf->getAllFiles();
-    // print_r($files);
 
     header('Location: ../accueil.php');
 

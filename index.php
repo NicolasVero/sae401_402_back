@@ -10,21 +10,11 @@
     
     <?php
 
-        include 'back/scripts/connect_bdd.php';
+        include 'back/scripts/lirePages.php';
 
-        lireArticles($db);
-
-
-        function lireArticles($db) {
-
-            $schema = $db -> prepare('SELECT * FROM pages WHERE affiche = 1');
-            $schema -> execute();
-
-            while ( $page = $schema -> fetch() ) {
-                echo "Page : <a href='". $page['url'] ."' target='_blank' />" . $page['titre'] . "</a><br>";
-            }
-        }
-
+        lirePages("projet");
+        echo "<br>";
+        lirePages("actu");
 
     ?>
 

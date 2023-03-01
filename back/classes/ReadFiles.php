@@ -2,13 +2,16 @@
 
     class ReadFiles {
 
-        const FOLDER_NAME = './pages';
+        // const FOLDER_NAME = './pages';
 
+        private string $folder_name;
         private $scandir;
 
-        public function __construct() {
+        public function __construct(string $folder_name) {
 
-            $this->scandir = scandir(self::FOLDER_NAME);
+            $this->folder_name = $folder_name;
+            $this->scandir = scandir($this->folder_name);
+            // $this->scandir = scandir(self::FOLDER_NAME);
         }
 
         public function viewAllFiles() {

@@ -76,7 +76,7 @@
     
         include 'classes/ReadFiles.php';
         
-        $rf = new ReadFiles();
+        $rf = new ReadFiles("./pages/");
         // $rf->viewAllFiles();
         $pages = $rf->getHTMLFiles();
         
