@@ -107,7 +107,7 @@
             echo "<span class='affiche'><a href='scripts/change_affiche.php?page=" . $page_id['id'] . "'>$icone</a></span>";
             echo "<span class='modif'><a href='#'><img src='img/Modifier.png'></a></span>";
             echo "<span class='telecharger'><a href='pages/$page' download='PAGE : $page'><img src='img/download.png'></a></span>";
-            echo "<span class='supp'><a href='scripts/delete_page.php?page=$page'><img src='img/Supprimer.png'></a></span>";
+            echo "<span class='supp'><a onclick='return confirmation();' href='scripts/delete_page.php?page=$page'><img src='img/Supprimer.png'></a></span>";
             echo "</div>";
             echo "</div>";
         }
@@ -115,6 +115,12 @@
 
     
     ?>
+
+    <script>
+        function confirmation() {
+            return confirm('Cette opération est irréversible, êtes vous sûr de vouloir la réaliser ? (Possibilitée de mettre la page en masquée)'); 
+        }
+    </script> 
 
 </body>
 </html>
