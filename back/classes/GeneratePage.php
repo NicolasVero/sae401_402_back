@@ -2,7 +2,7 @@
 
     final class GeneratePage {
 
-        const PATH = './pages/';
+        const PATH = '../pages/';
 
         private string $pageTitle;
         private string $title;

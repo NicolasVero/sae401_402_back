@@ -66,8 +66,9 @@
 <body>
     
     <div> 
-        <a href="creationPages.php"><p>Créer une nouvelle page</p></a>
-        <a href="televerserPage.php"><p>Téléverser une nouvelle page</p></a>
+        <a href="scripts/creation_pages.php"><p>Créer une nouvelle page</p></a>
+        <a href="scripts/televerser_page.php"><p>Téléverser une nouvelle page</p></a>
+        <!-- <a href="scripts/gestion_utilisateurs.php"><p>Téléverser une nouvelle page</p></a> -->
     </div>
 
 
@@ -79,7 +80,7 @@
         // $rf->viewAllFiles();
         $pages = $rf->getHTMLFiles();
         
-        include 'connect_bdd.php';
+        include 'scripts/connect_bdd.php';
 
         foreach ($pages as $page) {
             drawPageDiv($page, $db);
@@ -103,10 +104,10 @@
             echo "<div class='page'>";
             echo "<h3><a href='pages/$page' target='_blank'>$page</a></h3>";
             echo "<div class='page-option'>";
-            echo "<span class='affiche'><a href='changeAffiche.php?page=" . $page_id['id'] . "'>$icone</a></span>";
+            echo "<span class='affiche'><a href='scripts/change_affiche.php?page=" . $page_id['id'] . "'>$icone</a></span>";
             echo "<span class='modif'><a href='#'><img src='img/Modifier.png'></a></span>";
             echo "<span class='telecharger'><a href='pages/$page' download='PAGE : $page'><img src='img/download.png'></a></span>";
-            echo "<span class='supp'><a href='deletePage.php?page=$page'><img src='img/Supprimer.png'></a></span>";
+            echo "<span class='supp'><a href='scripts/delete_page.php?page=$page'><img src='img/Supprimer.png'></a></span>";
             echo "</div>";
             echo "</div>";
         }

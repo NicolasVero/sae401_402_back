@@ -26,11 +26,12 @@
             include 'connect_bdd.php';
             
             print_r($_POST);
+            print_r($_POST['html']);
         }
     
     ?>
 
-    <form action="televerserPage.php" method="POST">
+    <form action="televerser_page.php" method="POST" enctype="multipart/form-data">
         <input type="text" name="titre" id="titre" required>
         <div>
             <label for="affiche">Afficher la page sur le site</label>
@@ -43,7 +44,7 @@
         <label for="html">Choisir un fichier html</label>
         <input type="file" name="html" id="html" accept=".html">
         <label for="html">Choisir un fichier css</label>
-        <input type="file" name="css" id="css" acept=".css">
+        <input type="file" name="css" id="css" accept=".css">
 
         <input type="submit">
     </form>

@@ -10,7 +10,7 @@
     
     <?php
 
-        include 'back/connect_bdd.php';
+        include 'back/scripts/connect_bdd.php';
 
         lireArticles($db);
 

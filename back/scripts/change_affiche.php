@@ -6,6 +6,6 @@
     $reserver = $db -> prepare($schema);
     $reserver -> execute(array($_GET['page']));  
 
-    header("Location: accueil.php");
+    header("Location: ../accueil.php");
 
 ?>

@@ -7,9 +7,9 @@
     // echo htmlentities($_POST['textarea']);
     // echo htmlentities($_POST['titre']);
     
-    include 'classes/GeneratePage.php';
-    include 'classes/ReadFiles.php';
-    include 'classes/Page.php';
+    include '../classes/GeneratePage.php';
+    include '../classes/ReadFiles.php';
+    include '../classes/Page.php';
 
     $gp = new GeneratePage($_POST['titre'], $_POST['textarea']);
     $gp->generateHTMLFile();
@@ -26,6 +26,6 @@
     // $files = $rf->getAllFiles();
     // print_r($files);
 
-    header('Location: accueil.php');
+    header('Location: ../accueil.php');
 
 ?>
