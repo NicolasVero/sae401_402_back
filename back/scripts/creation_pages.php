@@ -17,7 +17,7 @@
             <script src="init_tinymce.js"></script>
 
             <form action='traitement.php' method='POST' enctype="multipart/form-data">
-                <fieldset>
+                <!-- <fieldset>
                     <legend>De quel type de page s'agit </legend>
 
                     <div>
@@ -27,7 +27,7 @@
                         <input type="radio" id="actu" name="actu" value="actu">
                         <label for="actu">Actualité</label>
                     </div>
-                </fieldset>
+                </fieldset> -->
 
                 <input type="text" name="titre" id="titre" placeholder="Titre de la page" required/>
                 <textarea name='textarea' id='MyTextArea'></textarea>

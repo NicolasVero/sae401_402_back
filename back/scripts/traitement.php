@@ -10,11 +10,13 @@
     $gp = new GeneratePage($_POST['titre'], $_POST['textarea']);
     $gp->generateHTMLFile();
 
+
+    echo $gp->getUrl();
     $p = new Page($_POST['titre'], $_POST['titre'], "html", $gp->getUrl(), "style.css", "url");
     print_r($_POST);
 
     $p->remplir_bdd();
 
-    header('Location: ../accueil.php');
+    // header('Location: ../accueil.php');
 
 ?>

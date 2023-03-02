@@ -10,7 +10,7 @@
     
     <?php
 
-        include 'back/scripts/lirePages.php';
+        include 'back/scripts/lire_pages.php';
 
         lirePages("projet");
         echo "<br>";
