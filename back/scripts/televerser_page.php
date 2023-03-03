@@ -25,8 +25,27 @@
 
             include 'connect_bdd.php';
             
-            print_r($_POST);
-            print_r($_POST['html']);
+            // print_r($_POST);
+            // print_r($_POST['html']);
+
+            $html = array(
+                'name' => $_FILES['html']['name'],
+                'size' => $_FILES['html']['size'],
+                'type' => $_FILES['html']['type'],
+                'tmp_name' => $_FILES['html']['tmp_name']
+            );
+
+            foreach($html as $key => $element) {
+                echo "$key : $element <br>";
+            }
+
+            if(move_uploaded_file($html['tmp_name'], "./pages/")) {
+                echo "fichier trans";
+            }
+
+
+
+
         }
     
     ?>

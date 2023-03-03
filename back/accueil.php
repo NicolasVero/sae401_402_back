@@ -91,13 +91,13 @@
         function drawPageDiv($page, $db) {
 
             $schema = "SELECT id, affiche FROM pages WHERE tiny_url = ?";
-            $get_id = $db -> prepare($schema);
-            $get_id -> execute(array($page));  
+            $requete = $db -> prepare($schema);
+            $requete -> execute(array($page));  
 
-            $page_id = $get_id -> fetch();
-
-            echo $page_id['id'];
+            $page_id = $requete -> fetch();
             print_r($page_id);
+            echo "retour : ";
+            // echo $page_id['id'];
 
             $icone = $page_id['affiche'] == 1 ? "<img src='img/invisible.png' title='rendre invisible'>" : "<img src='img/visible.png' title='rendre visible'>";
 

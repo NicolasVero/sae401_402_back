@@ -12,11 +12,11 @@
 
 
     echo $gp->getUrl();
-    $p = new Page($_POST['titre'], $_POST['titre'], "html", $gp->getUrl(), "style.css", "url");
+    $p = new Page($_POST['titre'], $_POST['textarea'], "projet", "html", $gp->getUrl(), "style.css");
     print_r($_POST);
 
     $p->remplir_bdd();
 
-    // header('Location: ../accueil.php');
+    header('Location: ../accueil.php');
 
 ?>
