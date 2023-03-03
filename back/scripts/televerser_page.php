@@ -74,8 +74,12 @@
             <input type="checkbox" name="affiche" id="affiche" checked>
         </div>
         <div>
-            <label for="affiche">Utiliser la feuille de style par défaut</label>
+            <label for="style">Utiliser la feuille de style par défaut</label>
             <input type="checkbox" name="style" id="style" checked>
+        </div>
+        <div>
+            <label for="style_link">Chemin jusqu'à la feuille de style</label>
+            <input type="text" name="style_link" id="style_link" placeholder="/dossier/">
         </div>
         <label for="html">Choisir un fichier html</label>
         <input type="file" name="html" id="html" accept=".html">
