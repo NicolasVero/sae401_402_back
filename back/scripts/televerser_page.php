@@ -35,18 +35,29 @@
                 'tmp_name' => $_FILES['html']['tmp_name']
             );
 
+            $css = array(
+                'name' => $_FILES['css']['name'],
+                'size' => $_FILES['css']['size'],
+                'type' => $_FILES['css']['type'],
+                'tmp_name' => $_FILES['css']['tmp_name']
+            );
+
             foreach($html as $key => $element) {
                 echo "$key : $element <br>";
             }
 
-            if(move_uploaded_file($html['tmp_name'], "../pages/" . $html['name'])) {
+            if(move_uploaded_file($html['tmp_name'], "../pages/" . $html['name']) && 
+               move_uploaded_file($css ['tmp_name'], "../pages/" . $css['name'])) {
+
                 echo "fichier trans à l'adresse  : ../pages/" . $html['name'];
 
                 include '../classes/Page.php';
 
-                $p = new Page($_POST['titre'], "null", "projet", "html", $html['name'], "style.css");
+                $p = new Page($_POST['titre'], "null", "projet", "html", $html['name'], $css['name']);
                 $p->remplir_bdd();
-                    
+
+                header("Location: ../accueil.php");
+                
             }
 
 
