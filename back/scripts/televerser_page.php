@@ -21,8 +21,8 @@
 
     <?php
     
-        if(isset($_POST['titre'])) {
-
+        if(isset($_FILES['html']['name'])) {
+            echo 'rentre';
             include 'connect_bdd.php';
             
             // print_r($_POST);
@@ -39,8 +39,14 @@
                 echo "$key : $element <br>";
             }
 
-            if(move_uploaded_file($html['tmp_name'], "./pages/")) {
-                echo "fichier trans";
+            if(move_uploaded_file($html['tmp_name'], "../pages/" . $html['name'])) {
+                echo "fichier trans à l'adresse  : ../pages/" . $html['name'];
+
+                include '../classes/Page.php';
+
+                $p = new Page($_POST['titre'], "null", "projet", "html", $html['name'], "style.css");
+                $p->remplir_bdd();
+                    
             }
 
 
