@@ -68,7 +68,6 @@
     <div> 
         <a href="scripts/creation_pages.php"><p>Créer une nouvelle page</p></a>
         <a href="scripts/televerser_page.php"><p>Téléverser une nouvelle page</p></a>
-        <!-- <a href="scripts/gestion_utilisateurs.php"><p>Téléverser une nouvelle page</p></a> -->
     </div>
 
 
