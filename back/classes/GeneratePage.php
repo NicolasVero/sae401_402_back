@@ -20,9 +20,24 @@
             return strtolower(str_replace(" ", "-", $s));
         }
 
+        //! return bool ? 
+        public function generateFolder() {
+            
+            if(!file_exists(self::PATH . $this->pageTitle)) 
+                return mkdir(self::PATH . $this->pageTitle);
+
+            return false;
+        }
+
+
+        public function generateImagesFolder():void {
+
+            mkdir(self::PATH . $this->pageTitle . "/images/");
+        }
+
         public function generateHTMLFile():void {
 
-            $open = fopen(self::PATH . $this->pageTitle . '.html', 'w');
+            $open = fopen(self::PATH  . $this->pageTitle . "/" . $this->pageTitle . '.html', 'w');
             fwrite($open, $this->buildHTML());
             fclose($open);
         }

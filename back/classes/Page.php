@@ -56,6 +56,8 @@
             include '../scripts/connect_bdd.php';
 
 
+            //! script empecher deux fichiers meme nom
+
             // include 'ReadFiles.php';
 
             // $rf = new ReadFiles("../pages/");
@@ -71,9 +73,9 @@
             //     }
             // }
 
-            $schema = "INSERT INTO pages(titre, contenu, type, affiche, url, tiny_url, style, date) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            $schema = "INSERT INTO pages(dossier, titre, contenu, type, affiche, url, tiny_url, style, date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $creerPage = $db -> prepare($schema);
-            $creerPage -> execute(array($this->titre, $this->texte, $this->type, $this->estAffiche, $this->url, $this->tiny_url, $this->style, $this->date));
+            $creerPage -> execute(array($this->titre, $this->titre, $this->texte, $this->type, $this->estAffiche, $this->url, $this->tiny_url, $this->style, $this->date));
         }
 
     }

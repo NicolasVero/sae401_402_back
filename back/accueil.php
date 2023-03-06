@@ -78,11 +78,49 @@
         $rf = new ReadFiles("./pages/");
         // $rf->viewAllFiles();
         $pages = $rf->getHTMLFiles();
+        // $dossiers = $rf->viewFolders();
+        $dossiers = $rf->getFolders();
         
+        print_r($dossiers);
+
         include 'scripts/connect_bdd.php';
 
-        foreach ($pages as $page) {
-            drawPageDiv($page, $db);
+        foreach($dossiers as $dossier)
+            drawFolderDiv($dossier, $db);
+
+
+        // for($i = 0; $i < count($dossiers); $i++) {
+
+        // }
+
+
+        // foreach ($pages as $page) {
+        //     drawPageDiv($page, $db);
+        // }
+
+
+
+
+        function drawFolderDiv($dossier, $db) {
+            
+            $schema = "SELECT id, affiche FROM pages WHERE dossier = ?";
+            $requete = $db -> prepare($schema);
+            $requete -> execute(array($dossier));  
+
+            $dossier = $requete -> fetch();
+
+            $icone = $dossier['affiche'] == 1 ? "<img src='img/invisible.png' title='rendre invisible'>" : "<img src='img/visible.png' title='rendre visible'>";
+
+            echo "<div class='page'>";
+            echo "<h3><a href='pages/$dossier/$dossier.html' target='_blank'>$dossier</a></h3>";
+            echo "<div class='page-option'>";
+            echo "<span class='affiche'><a href='scripts/change_affiche.php?page=" . $dossier['id'] . "'>$icone</a></span>";
+            echo "<span class='modif'><a href='#'><img src='img/Modifier.png'></a></span>";
+            echo "<span class='telecharger'><a href='pages/$dossier/$dossier.html' download='PAGE : $dossier/$dossier.html'><img src='img/download.png'></a></span>";
+            echo "<span class='supp'><a onclick='return confirmation();' href='scripts/delete_page.php?page=$dossier/$dossier.html'><img src='img/Supprimer.png'></a></span>";
+            echo "</div>";
+            echo "</div>";
+
         }
 
 
@@ -112,7 +150,6 @@
         }
 
 
-    
     ?>
 
     <script>

@@ -14,6 +14,22 @@
             // $this->scandir = scandir(self::FOLDER_NAME);
         }
 
+        public function viewFolders() {
+
+            print_r($this->scandir);
+        }
+
+        public function getFolders() {
+
+            $files = array();
+
+            foreach($this->scandir as $fichier)
+                if($fichier != "." && $fichier != "..")
+                    $files[] = $fichier;
+
+            return $files;
+        }
+
         public function viewAllFiles() {
             
             foreach($this->scandir as $fichier)

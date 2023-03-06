@@ -8,7 +8,10 @@
     include '../classes/Page.php';
 
     $gp = new GeneratePage($_POST['titre'], $_POST['textarea']);
-    $gp->generateHTMLFile();
+    if($gp->generateFolder()) {
+        $gp->generateImagesFolder();
+        $gp->generateHTMLFile();
+    }
 
 
     echo $gp->getUrl();

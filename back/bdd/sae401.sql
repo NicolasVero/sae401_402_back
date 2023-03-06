@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : ven. 03 mars 2023 à 12:35
+-- Généré le : lun. 06 mars 2023 à 14:20
 -- Version du serveur :  10.4.17-MariaDB
 -- Version de PHP : 8.0.0
 
@@ -45,6 +45,7 @@ CREATE TABLE `auteurs` (
 CREATE TABLE `pages` (
   `id` int(11) NOT NULL,
   `id_auteur` int(11) NOT NULL,
+  `dossier` varchar(150) NOT NULL,
   `titre` varchar(255) NOT NULL,
   `contenu` text NOT NULL,
   `type` varchar(10) NOT NULL,
@@ -59,9 +60,12 @@ CREATE TABLE `pages` (
 -- Déchargement des données de la table `pages`
 --
 
-INSERT INTO `pages` (`id`, `id_auteur`, `titre`, `contenu`, `type`, `affiche`, `url`, `tiny_url`, `style`, `date`) VALUES
-(13, 0, 'a', '<p>a</p>', 'projet', 1, './back/pages/a.html', 'a.html', 'style.css', '2003-03-23'),
-(14, 0, 'louis', '<p>Louis aime le sexe&nbsp;<strong>anal</strong></p>', 'projet', 1, './back/pages/louis.html', 'louis.html', 'style.css', '2003-03-23');
+INSERT INTO `pages` (`id`, `id_auteur`, `dossier`, `titre`, `contenu`, `type`, `affiche`, `url`, `tiny_url`, `style`, `date`) VALUES
+(28, 0, '', 'd', '<p>d</p>', 'projet', 1, './back/pages/d.html', 'd.html', 'style.css', '2006-03-23'),
+(29, 0, '', 'aa', '<p>aa</p>', 'projet', 1, './back/pages/aa.html', 'aa.html', 'style.css', '2006-03-23'),
+(30, 0, '', 'dgfd', '<p>gfd</p>', 'projet', 1, './back/pages/dgfd.html', 'dgfd.html', 'style.css', '2006-03-23'),
+(31, 0, '', 'test', '<p>test</p>', 'projet', 1, './back/pages/test.html', 'test.html', 'style.css', '2006-03-23'),
+(32, 0, '', 'gf', '<p>gf</p>', 'projet', 1, './back/pages/gf.html', 'gf.html', 'style.css', '2006-03-23');
 
 --
 -- Index pour les tables déchargées
@@ -93,7 +97,7 @@ ALTER TABLE `auteurs`
 -- AUTO_INCREMENT pour la table `pages`
 --
 ALTER TABLE `pages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
