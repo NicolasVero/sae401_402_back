@@ -23,7 +23,7 @@
             $this->type       = "projet";
             $this->html       = $html;
             $this->style      = $style;
-            $this->url        = self::PATH . $url;
+            $this->url        = self::PATH . $this->titre . "/" . $url;
             $this->tiny_url   = $url;
             $this->date       = Page::donnerDate();
             $this->id_auteur  = 0;
