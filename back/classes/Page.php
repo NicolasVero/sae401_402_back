@@ -4,6 +4,7 @@
 
         const PATH = './back/pages/';
 
+        private string $dossier;
         private string $titre;
         private string $texte;
         private string $type;
@@ -13,26 +14,28 @@
         private string $tiny_url;
         private string $date;
         private int $id_auteur;
+        private string $auteur;
         private bool $estAffiche;
 
-        public function __construct(string $titre, string $texte, string $type, string $html, string $url, string $style) {
+        public function __construct(string $dossier, string $titre, string $texte, string $type, string $html, string $url, string $style, string $auteur) {
 
+            $this->dossier    = $dossier;
             $this->titre      = $titre;
             $this->texte      = $texte;
-            // $this->type       = $type;
-            $this->type       = "projet";
+            $this->type       = $type;
             $this->html       = $html;
             $this->style      = $style;
             $this->url        = self::PATH . $this->titre . "/" . $url;
             $this->tiny_url   = $url;
             $this->date       = Page::donnerDate();
             $this->id_auteur  = 0;
+            $this->auteur     = $auteur;
             $this->estAffiche = true;
         }
 
         private static function donnerDate() {
             date_default_timezone_set('Europe/Paris');
-            return date('d-m-y h:i:s');
+            return date('y-m-d h:i:s');
         }
 
         public function setAffiche():void {
@@ -73,9 +76,9 @@
             //     }
             // }
 
-            $schema = "INSERT INTO pages(dossier, titre, contenu, type, affiche, url, tiny_url, style, date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $schema = "INSERT INTO pages(dossier, titre, contenu, type, affiche, url, tiny_url, style, date, auteur) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $creerPage = $db -> prepare($schema);
-            $creerPage -> execute(array($this->titre, $this->titre, $this->texte, $this->type, $this->estAffiche, $this->url, $this->tiny_url, $this->style, $this->date));
+            $creerPage -> execute(array($this->dossier, $this->titre, $this->texte, $this->type, $this->estAffiche, $this->url, $this->tiny_url, $this->style, $this->date, $this->auteur));
         }
 
     }

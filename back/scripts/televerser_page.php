@@ -7,13 +7,13 @@
     <title>Document</title>
 
     <style>
+
         form {
             display: flex;
             flex-direction: column;
             width: 50vw;
         }
-
-        
+  
     </style>
 
 </head>
@@ -25,11 +25,13 @@
             echo 'rentre';
             include 'connect_bdd.php';
             
+            mkdir("../pages/" . $_POST['titre']);
+            mkdir("../pages/" . $_POST['titre'] . "/images/");
             // print_r($_POST);
             // print_r($_POST['html']);
 
             $html = array(
-                'name' => $_FILES['html']['name'],
+                'name' => $_POST['titre'] . ".html",
                 'size' => $_FILES['html']['size'],
                 'type' => $_FILES['html']['type'],
                 'tmp_name' => $_FILES['html']['tmp_name']
@@ -46,10 +48,8 @@
                 echo "$key : $element <br>";
             }
 
-            if(move_uploaded_file($html['tmp_name'], "../pages/" . $html['name']) && 
-               move_uploaded_file($css ['tmp_name'], "../pages/" . $css['name'])) {
-
-                echo "fichier trans à l'adresse  : ../pages/" . $html['name'];
+            if(move_uploaded_file($html['tmp_name'], "../pages/" . $_POST['titre'] . "/" . $html['name']) && 
+               move_uploaded_file($css ['tmp_name'], "../pages/" . $_POST['titre'] . "/" . $css['name'])) {
 
                 include '../classes/Page.php';
 
@@ -67,17 +67,17 @@
     <form action="televerser_page.php" method="POST" enctype="multipart/form-data">
         <input type="text" name="titre" id="titre" required>
         <div>
-            <label for="affiche">Afficher la page sur le site</label>
-            <input type="checkbox" name="affiche" id="affiche" checked>
-        </div>
-        <div>
             <label for="style">Utiliser la feuille de style par défaut</label>
             <input type="checkbox" name="style" id="style" checked>
         </div>
         <label for="html">Choisir un fichier html</label>
         <input type="file" name="html" id="html" accept=".html">
+
         <label for="html">Choisir un fichier css</label>
         <input type="file" name="css" id="css" accept=".css">
+        
+        <label for="html">Selectionner les images de votre page</label>
+        <input type="file" name="images" id="css">
 
         <input type="submit">
     </form>

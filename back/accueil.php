@@ -81,6 +81,8 @@
         // $dossiers = $rf->viewFolders();
         $dossiers = $rf->getFolders();
         
+        print_r($dossiers);
+        echo "<br>";
 
         include 'scripts/connect_bdd.php';
 
@@ -105,10 +107,10 @@
 
             $dossier_infos = $requete -> fetch();
 
-            print_r($dossier);
-
             $icone = $dossier_infos['affiche'] == 1 ? "<img src='img/invisible.png' title='rendre invisible'>" : "<img src='img/visible.png' title='rendre visible'>";
 
+            print_r($dossier_infos);
+            echo "infos : " . count($dossier_infos);
 
             echo "<div class='page'>";
             echo "<h3><a href='pages/$path' target='_blank'>$dossier</a></h3>";

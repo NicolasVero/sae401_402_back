@@ -8,7 +8,7 @@
 
     // unlink("../pages/" . $_GET['page']);
     remove_dir("../pages/" . $_GET['page']);
-    // header("Location: ../accueil.php");
+    header("Location: ../accueil.php");
 
 
     function remove_dir($dir) {

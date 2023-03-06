@@ -7,17 +7,23 @@
         private string $pageTitle;
         private string $title;
         private string $content;
+        private string $dossier;
     
         public function __construct(string $title, string $content) {
 
             $this->pageTitle = $this->spaceToDash($title);
             $this->title     = $title;
             $this->content   = $content;
+            $this->dossier   = $this->pageTitle;
         }
 
         public function spaceToDash(string $s):string {
 
             return strtolower(str_replace(" ", "-", $s));
+        }
+
+        public function getDossier():string {
+            return $this->dossier;
         }
 
         //! return bool ? 
@@ -74,13 +80,27 @@
 
         private function completeHTMLFooter():string {
 
+            include 'connect_bdd.php';
+
+            $schema = $db -> prepare('SELECT date, auteur FROM pages WHERE dossier LIKE ?');
+            $schema -> execute(array($this->dossier));
+
+            $infos = $schema -> fetch(); 
+            echo $schema -> rowCount();
+
+            echo "<b>page : " . $this->dossier . "</b><br>";
+            
+            echo "infos fetch : ";
+            print_r($infos);
+            
+
             return "
                 </main>
 
                 <footer>
-                <p>Infos a venir</footer>
-                <footer>
-
+                <p>Fait le " . $infos['date'] . " par " . $infos['auteur'] . "</p>
+                </footer>
+                
                 </body>
                 </html>
             ";

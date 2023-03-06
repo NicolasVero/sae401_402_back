@@ -10,24 +10,54 @@
     </head>
     <body>
 
+    <?php
+    
+    if(isset($_POST['textarea'])) {
+
+        include '../classes/GeneratePage.php';
+        include '../classes/Page.php';
+        
+        $gp = new GeneratePage($_POST['titre'], $_POST['textarea']);
+        
+        if($gp->generateFolder()) {
+         
+            $p = new Page($gp->getDossier(), $_POST['titre'], $_POST['textarea'], $_POST['type'], "html", $gp->getUrl(), "style.css", $_POST['auteur']);
+            $gp->generateImagesFolder();
+            $p->remplir_bdd();
+            $gp->generateHTMLFile();
+            
+            
+            echo $gp->getUrl();
+            print_r($_POST);
+            
+            // header('Location: ../accueil.php');
+        }    
+    }
+    
+    ?>
+
+
+
         <script src="../tinymce/tinymce.min.js" ></script>
 
         <main>
 
             <script src="init_tinymce.js"></script>
 
-            <form action='traitement.php' method='POST' enctype="multipart/form-data">
-                <!-- <fieldset>
+            <form action='creation_pages.php' method='POST' enctype="multipart/form-data">
+                <fieldset>
                     <legend>De quel type de page s'agit </legend>
 
                     <div>
-                        <input type="radio" id="projet" name="projet" value="projet" checked>
+                        <input type="radio" id="projet" name="type" value="projet" checked>
                         <label for="projet">Projet</label>
 
-                        <input type="radio" id="actu" name="actu" value="actu">
+                        <input type="radio" id="actu" name="type" value="actu">
                         <label for="actu">Actualité</label>
                     </div>
-                </fieldset> -->
+                </fieldset>
+
+                <input type="text" name="auteur" id="auteur" placeholder="Auteur de la page" required/>
 
                 <input type="text" name="titre" id="titre" placeholder="Titre de la page" required/>
                 <textarea name='textarea' id='MyTextArea'></textarea>
