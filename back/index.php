@@ -30,7 +30,7 @@
             <label for="password">Mot de passe</label>
             <input type="password" name="password" placeholder="Mot de passe" id="password">
             
-            <input type="submit">
+            <input type="submit" value="Se connecter">
         </form>
     </main>
 </body>
