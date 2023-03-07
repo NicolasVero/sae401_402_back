@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png">
     <title>Acceuil</title>
 </head>
 <body>
@@ -64,16 +65,14 @@
                 $icone = "<img src='img/visible.png' title='Rendre visible'>";
                 echo "<div class='page non-visible'>";
             }
-
-            // $icone = $dossier_infos['affiche'] == 1 ? "<img src='img/invisible.png' title='Rendre invisible'>" : "<img src='img/visible.png' title='Rendre visible'>";
-
             
             echo "<div style='display: flex;'><h3 style='margin: 0px;'><a style='padding: 10px;'href='pages/$path' target='_blank'>$dossier</a></h3>";
             echo "<p style='transform: translateX(-15px);'> - Ajoutée le " . $dossier_infos['date'] . "</p></div>";
             echo "<div class='page-option'>";
             echo "<span class='affiche'><a href='scripts/change_affiche.php?page=" . $dossier_infos['id'] . "'>$icone</a></span>";
             echo "<span class='modif'><a href='#'><img src='img/Modifier.png'></a></span>";
-            echo "<span class='telecharger'><a href='pages/$path' download='PAGE : $path.html'><img src='img/download.png' title='Télécharger la page'></a></span>";
+            //! voir dl dossier en entier 
+            echo "<span class='telecharger'><a href='pages/$dossier/' download='PAGE : $dossier/'><img src='img/download.png' title='Télécharger la page'></a></span>";
             echo "<span class='supp'><a onclick='return confirmation();' href='scripts/delete_page.php?id=" . $dossier_infos['id'] . "&page=$dossier'><img src='img/Supprimer.png' title='Supprimer la page'></a></span>";
             echo "</div>";
             echo "</div>";

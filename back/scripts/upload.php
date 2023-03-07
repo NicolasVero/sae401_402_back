@@ -8,6 +8,8 @@
    * Change this line to set the upload folder *
    *********************************************/
 
+  
+
    $imageFolder = "../pages/img/images/";
 
   if (isset($_SERVER['HTTP_ORIGIN'])) {

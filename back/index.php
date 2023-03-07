@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles/login-style.css">
     <title>Document</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png">
 </head>
 <body>
 

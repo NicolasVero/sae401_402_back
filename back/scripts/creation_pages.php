@@ -45,23 +45,27 @@
             <script src="init_tinymce.js"></script>
 
             <form action='creation_pages.php' method='POST' enctype="multipart/form-data">
-                <fieldset>
-                    <legend>De quel type de page s'agit </legend>
+                <!-- <fieldset> -->
+                    <!-- <legend>De quel type de page s'agit </legend> -->
 
+
+                <!-- </fieldset> -->
+                
+                <div id="form-data">
+                    <input class="form-input-text" type="text" name="titre" id="titre" placeholder="Titre de la page" required/>
+                    <input class="form-input-text" type="text" name="auteur" id="auteur" placeholder="Auteur de la page" required/>
                     <div>
                         <input type="radio" id="projet" name="type" value="projet" checked>
                         <label for="projet">Projet</label>
-
+    
                         <input type="radio" id="actu" name="type" value="actu">
                         <label for="actu">Actualité</label>
                     </div>
-                </fieldset>
+                </div>   
+                
 
-                <input type="text" name="auteur" id="auteur" placeholder="Auteur de la page" required/>
-
-                <input type="text" name="titre" id="titre" placeholder="Titre de la page" required/>
                 <textarea name='textarea' id='MyTextArea'></textarea>
-                <input type="submit" value="Créer la page" class="bouton">
+                <input style="margin: 0 auto;" type="submit" value="Créer la page" class="bouton">
             </form>
 
         </main>

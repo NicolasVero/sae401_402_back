@@ -1,4 +1,4 @@
-//? ° si page créée même nom qu'une autre --> donner autre nom ( exemple => exemple(1) )
+// ° si page créée même nom qu'une autre --> donner autre nom ( exemple => exemple(1) )
 // ° gerer pages actus et pages projets 
 // ° voir problemes upload images 
 // ° demander mdp quand suppression d'une page 
@@ -8,9 +8,12 @@
 // ° changer date (probleme bdd -> mauvaise date)
 // ° permettre de telecharger une page 
 // ° gerer auteurs pages
-° probleme images dossier (mail carpentier -> solution : faire televerser images apres depuis accueil.php ?)
-// ° afficher message quand aucune page dans accueil.php
 
+° probleme images dossier (mail carpentier -> solution : faire televerser images apres depuis accueil.php ?)
+ OU mettre images dans un dossier centralisé, et bouger toutes les images vers dossier final quand page créée
+
+
+// ° afficher message quand aucune page dans accueil.php
 ° dossier et fichiers pas en minuscule et tiret au lieu des espaces quand televersement
 ° completer données constructeurs classes (données brutes -> auteur quand televersement par exemple)
 ° différencier actu et projet
