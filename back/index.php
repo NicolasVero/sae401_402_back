@@ -7,24 +7,27 @@
     <link rel="stylesheet" href="styles/login-style.css">
     <title>Document</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
-    
-
-    <style media="screen">
-      
-
-    </style>
 </head>
 <body>
+
+    <?php
+    
+        if(isset($_POST['password'])) 
+            if($_POST['username'] == 'admin' && $_POST['password'] == '1234')
+                header('Location: accueil.php');
+
+    ?>
+
     <main id="login-form">
 
-        <form action="accueil.php" method="POST">
+        <form action="index.php" method="POST">
             <h3>Connexion</h3>
             
             <label for="username">Identifiant</label>
-            <input type="text" placeholder="Identifiant" id="username">
+            <input type="text" name="username" placeholder="Identifiant" id="username">
             
             <label for="password">Mot de passe</label>
-            <input type="password" placeholder="Mot de passe" id="password">
+            <input type="password" name="password" placeholder="Mot de passe" id="password">
             
             <input type="submit">
         </form>

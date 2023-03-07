@@ -37,8 +37,12 @@
             
             echo "<div id='pages'>";
             
-            foreach($dossiers as $dossier)
-                drawFolderDiv($dossier, $db);
+            if(count($dossiers) > 0) {
+                foreach($dossiers as $dossier)
+                    drawFolderDiv($dossier, $db);
+            } else {
+                echo "<h3>Aucune page prête à être affichée</h3>";
+            }
 
             echo "</div>";
         }
@@ -47,12 +51,11 @@
         
             $path = $dossier . "/" . $dossier . ".html";
 
-            $schema = "SELECT id, affiche FROM pages WHERE dossier = ?";
+            $schema = "SELECT id, affiche, date, type FROM pages WHERE dossier = ?";
             $requete = $db -> prepare($schema);
             $requete -> execute(array($dossier));  
 
             $dossier_infos = $requete -> fetch();
-
 
             if($dossier_infos['affiche'] == 1) {
                 $icone = "<img src='img/invisible.png' title='Rendre invisible'>";
@@ -65,7 +68,8 @@
             // $icone = $dossier_infos['affiche'] == 1 ? "<img src='img/invisible.png' title='Rendre invisible'>" : "<img src='img/visible.png' title='Rendre visible'>";
 
             
-            echo "<h3><a href='pages/$path' target='_blank'>$dossier</a></h3>";
+            echo "<div style='display: flex;'><h3 style='margin: 0px;'><a style='padding: 10px;'href='pages/$path' target='_blank'>$dossier</a></h3>";
+            echo "<p style='transform: translateX(-15px);'> - Ajoutée le " . $dossier_infos['date'] . "</p></div>";
             echo "<div class='page-option'>";
             echo "<span class='affiche'><a href='scripts/change_affiche.php?page=" . $dossier_infos['id'] . "'>$icone</a></span>";
             echo "<span class='modif'><a href='#'><img src='img/Modifier.png'></a></span>";

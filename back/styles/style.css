@@ -33,7 +33,7 @@ div.page {
     height: 75px;
     width: 45vw;
     border: 1px solid black;
-    border-radius: 7px;
+    border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: space-between;

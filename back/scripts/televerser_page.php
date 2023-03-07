@@ -53,7 +53,7 @@
 
                 include '../classes/Page.php';
 
-                $p = new Page($_POST['titre'], "null", "projet", "html", $html['name'], $css['name']);
+                $p = new Page($_POST['titre'], $_POST['titre'], "null", "projet", "html", $html['name'], $css['name'], "auteur");
                 $p->remplir_bdd();
 
                 header("Location: ../accueil.php");
