@@ -21,7 +21,7 @@
         
         if($gp->generateFolder()) {
          
-            $p = new Page($gp->getDossier(), $_POST['titre'], $_POST['textarea'], $_POST['type'], "html", $gp->getUrl(), "style.css", $_POST['auteur']);
+            $p = new Page($gp->getDossier(), $_POST['titre'], $_POST['textarea'], $_POST['type'], $gp->getUrl(), "style.css", $_POST['auteur']);
             $gp->generateImagesFolder();
             $p->remplir_bdd();
             $gp->generateHTMLFile();

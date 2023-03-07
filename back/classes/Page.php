@@ -8,27 +8,23 @@
         private string $titre;
         private string $texte;
         private string $type;
-        private string $html;
         private string $style;
         private string $url;
         private string $tiny_url;
         private string $date;
-        private int $id_auteur;
         private string $auteur;
         private bool $estAffiche;
 
-        public function __construct(string $dossier, string $titre, string $texte, string $type, string $html, string $url, string $style, string $auteur) {
+        public function __construct(string $dossier, string $titre, string $texte, string $type, string $url, string $style, string $auteur) {
 
             $this->dossier    = $dossier;
             $this->titre      = $titre;
             $this->texte      = $texte;
             $this->type       = $type;
-            $this->html       = $html;
             $this->style      = $style;
             $this->url        = self::PATH . Page::spaceToDash($this->titre) . "/" . $url;
             $this->tiny_url   = $url;
             $this->date       = Page::donnerDate();
-            $this->id_auteur  = 0;
             $this->auteur     = $auteur;
             $this->estAffiche = true;
         }
@@ -62,24 +58,6 @@
         public function remplir_bdd() {
 
             include '../scripts/connect_bdd.php';
-
-
-            //! script empecher deux fichiers meme nom
-
-            // include 'ReadFiles.php';
-
-            // $rf = new ReadFiles("../pages/");
-            // $pages = $rf->getAllFiles();
-
-            // print_r($pages);
-
-            // for($i = 0; $i < count($pages); $i++) {
-            //     if($pages[$i] == $this->tiny_url) {
-            //         $this->setTitre($this->titre . "($i)");
-            //         $this->setTinyURL($this->tiny_url . "($i)");
-            //         $this->setURL($this->url . "($i)");
-            //     }
-            // }
 
             $schema = "INSERT INTO pages(dossier, titre, contenu, type, affiche, url, tiny_url, style, date, auteur) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $creerPage = $db -> prepare($schema);

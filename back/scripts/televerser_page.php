@@ -43,7 +43,7 @@
 
                 include '../classes/Page.php';
 
-                $p = new Page(spaceToDash($_POST['titre']), $_POST['titre'], "null", "projet", "html", spaceToDash($html['name']), spaceToDash($css['name']), $_POST['auteur']);
+                $p = new Page(spaceToDash($_POST['titre']), $_POST['titre'], "null", $_POST['type'], spaceToDash($html['name']), spaceToDash($css['name']), $_POST['auteur']);
                 $p->remplir_bdd();
 
                 header("Location: ../accueil.php");
@@ -66,6 +66,13 @@
                 <label for="style">Utiliser la feuille de style par défaut</label>
                 <input type="checkbox" name="style" id="style" checked>
             </div>
+            <div>
+                <input type="radio" id="projet" name="type" value="projet" checked>
+                <label for="projet">Projet</label>
+
+                <input type="radio" id="actu" name="type" value="actu">
+                <label for="actu">Actualité</label>
+            </div>
         </div>
         <div id="televerser-form-files">
             <div>
@@ -81,7 +88,7 @@
                 <input style="margin: 0 auto;" type="file" name="images" id="css">
             </div>
         </div>
-        <input style="margin: 0 auto;" class="bouton" type="submit">
+        <input style="margin: 0 auto;" class="bouton" type="submit" value="Téléverser la page">
     </form>
 </body>
 </html>

@@ -14,8 +14,8 @@
 
 
 // ° afficher message quand aucune page dans accueil.php
-° dossier et fichiers pas en minuscule et tiret au lieu des espaces quand televersement
-° completer données constructeurs classes (données brutes -> auteur quand televersement par exemple)
+// ° dossier et fichiers pas en minuscule et tiret au lieu des espaces quand televersement
+// ° completer données constructeurs classes (données brutes -> auteur quand televersement par exemple)
 ° différencier actu et projet
 ° bouton telechargement -> telecharger directement le dossier
-° ajouté selection actu ou projet quand televersement
+// ° ajouté selection actu ou projet quand televersement
