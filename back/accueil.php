@@ -57,7 +57,7 @@
             $requete -> execute(array($dossier));  
 
             $dossier_infos = $requete -> fetch();
-
+            
             if($dossier_infos['affiche'] == 1) {
                 $icone = "<img src='img/invisible.png' title='Rendre invisible'>";
                 echo "<div class='page'>";

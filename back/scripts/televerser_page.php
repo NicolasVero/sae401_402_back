@@ -15,8 +15,8 @@
             echo 'rentre';
             include 'connect_bdd.php';
             
-            mkdir("../pages/" . $_POST['titre']);
-            mkdir("../pages/" . $_POST['titre'] . "/images/");
+            mkdir("../pages/" . spaceToDash($_POST['titre']));
+            mkdir("../pages/" . spaceToDash($_POST['titre']) . "/images/");
             // print_r($_POST);
             // print_r($_POST['html']);
 
@@ -38,18 +38,22 @@
                 echo "$key : $element <br>";
             }
 
-            if(move_uploaded_file($html['tmp_name'], "../pages/" . $_POST['titre'] . "/" . $html['name']) && 
-               move_uploaded_file($css ['tmp_name'], "../pages/" . $_POST['titre'] . "/" . $css['name'])) {
+            if(move_uploaded_file($html['tmp_name'], "../pages/" . spaceToDash($_POST['titre']) . "/" . spaceToDash($html['name'])) && 
+               move_uploaded_file($css ['tmp_name'], "../pages/" . spaceToDash($_POST['titre']) . "/" . spaceToDash($css['name']))) {
 
                 include '../classes/Page.php';
 
-                $p = new Page($_POST['titre'], $_POST['titre'], "null", "projet", "html", $html['name'], $css['name'], "auteur");
+                $p = new Page(spaceToDash($_POST['titre']), $_POST['titre'], "null", "projet", "html", spaceToDash($html['name']), spaceToDash($css['name']), $_POST['auteur']);
                 $p->remplir_bdd();
 
                 header("Location: ../accueil.php");
                 
             }
 
+        }
+
+        function spaceToDash(string $s):string {
+            return strtolower(str_replace(" ", "-", $s));
         }
     
     ?>
