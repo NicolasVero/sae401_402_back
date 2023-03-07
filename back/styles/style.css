@@ -8,6 +8,8 @@
     --rouge: #EB5E25;
 
     --transition-time: .5s;
+
+    --form-gap: 45px;
 }
 
 * {
@@ -105,6 +107,7 @@ span {
     font-weight: 900;
     font-size: 1.5rem;
     border: none;
+    cursor: pointer;
 }
 
 .bouton:hover {
@@ -121,12 +124,43 @@ span {
     background-color: rgb(216, 216, 216);
 }
 
+#creer-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--form-gap);
+}
 
- #form-data {
+#creer-form-data {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
- }
+}
+
+#televerser-form-data {
+    display: flex;
+    flex-direction: column;
+    gap: var(--form-gap);
+    border: 1px solid black;
+    padding: 50px;
+    margin: auto 60px;
+}
+
+#televerser-form-data > div:first-of-type {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+#televerser-form-files {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+#televerser-form-files div {
+    display: flex;
+    flex-direction: column;
+}
 
 .form-input-text {
     height: 30px;
@@ -149,7 +183,7 @@ h1 {
     color: white;
 }
 
-form {
+/* form {
     margin-top: 15px;
     border-radius: 10px;
     width: 100%;
@@ -159,7 +193,7 @@ form {
     gap: 30px;
     background-color: rgba(255,255,255,0.13);
     padding: 30px;
-}
+} */
 
 #MyTextArea {
     height: 600px;

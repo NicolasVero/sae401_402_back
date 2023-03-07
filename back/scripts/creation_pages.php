@@ -44,14 +44,14 @@
 
             <script src="init_tinymce.js"></script>
 
-            <form action='creation_pages.php' method='POST' enctype="multipart/form-data">
+            <form id="creer-form" action='creation_pages.php' method='POST' enctype="multipart/form-data">
                 <!-- <fieldset> -->
                     <!-- <legend>De quel type de page s'agit </legend> -->
 
 
                 <!-- </fieldset> -->
                 
-                <div id="form-data">
+                <div id="creer-form-data">
                     <input class="form-input-text" type="text" name="titre" id="titre" placeholder="Titre de la page" required/>
                     <input class="form-input-text" type="text" name="auteur" id="auteur" placeholder="Auteur de la page" required/>
                     <div>

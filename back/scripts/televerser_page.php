@@ -4,18 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/style.css">
     <title>Document</title>
-
-    <style>
-
-        form {
-            display: flex;
-            flex-direction: column;
-            width: 50vw;
-        }
-  
-    </style>
-
 </head>
 <body>
 
@@ -64,22 +54,30 @@
     
     ?>
 
-    <form action="televerser_page.php" method="POST" enctype="multipart/form-data">
-        <input type="text" name="titre" id="titre" required>
+    <form id="televerser-form-data" action="televerser_page.php" method="POST" enctype="multipart/form-data">
         <div>
-            <label for="style">Utiliser la feuille de style par défaut</label>
-            <input type="checkbox" name="style" id="style" checked>
+            <input class="form-input-text" type="text" name="titre" id="titre" placeholder="Titre de la page" required>
+            <input class="form-input-text" type="text" name="auteur" id="auteur" placeholder="Auteur de la page" required>
+            <div>
+                <label for="style">Utiliser la feuille de style par défaut</label>
+                <input type="checkbox" name="style" id="style" checked>
+            </div>
         </div>
-        <label for="html">Choisir un fichier html</label>
-        <input type="file" name="html" id="html" accept=".html">
-
-        <label for="html">Choisir un fichier css</label>
-        <input type="file" name="css" id="css" accept=".css">
-        
-        <label for="html">Selectionner les images de votre page</label>
-        <input type="file" name="images" id="css">
-
-        <input type="submit">
+        <div id="televerser-form-files">
+            <div>
+                <label for="html">Choisir un fichier html</label>
+                <input type="file" name="html" id="html" accept=".html">
+            </div>
+            <div>
+                <label for="html">Choisir un fichier css</label>
+                <input type="file" name="css" id="css" accept=".css">
+            </div>
+            <div>
+                <label for="html">Selectionner les images de votre page</label>
+                <input style="margin: 0 auto;" type="file" name="images" id="css">
+            </div>
+        </div>
+        <input style="margin: 0 auto;" class="bouton" type="submit">
     </form>
 </body>
 </html>
