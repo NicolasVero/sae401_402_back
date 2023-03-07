@@ -18,4 +18,5 @@
 // ° completer données constructeurs classes (données brutes -> auteur quand televersement par exemple)
 ° différencier actu et projet
 ° bouton telechargement -> telecharger directement le dossier
+° sécurité site => faire avec session ?
 // ° ajouté selection actu ou projet quand televersement
