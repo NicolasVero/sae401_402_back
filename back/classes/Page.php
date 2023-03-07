@@ -25,7 +25,7 @@
             $this->type       = $type;
             $this->html       = $html;
             $this->style      = $style;
-            $this->url        = self::PATH . $this->titre . "/" . $url;
+            $this->url        = self::PATH . Page::spaceToDash($this->titre) . "/" . $url;
             $this->tiny_url   = $url;
             $this->date       = Page::donnerDate();
             $this->id_auteur  = 0;
@@ -36,6 +36,11 @@
         private static function donnerDate() {
             date_default_timezone_set('Europe/Paris');
             return date('y-m-d h:i:s');
+        }
+
+        public static function spaceToDash(string $s):string {
+
+            return strtolower(str_replace(" ", "-", $s));
         }
 
         public function setAffiche():void {

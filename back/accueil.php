@@ -4,71 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
     <title>Acceuil</title>
-
-    <style>
-    
-        * {
-            box-sizing: border-box;
-        }
-
-        html, body {
-            /* background-color: black; */
-        }
-
-        div {
-            background-color: white;
-        }
-        
-        div.page {
-            height: 75px;
-            border: 1px solid black;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .page h3 {
-            padding: 15px;
-        }
-
-        div.page-option {
-            display: flex;
-            height: 100%; 
-        }
-        
-        p {
-            color: #080710;
-        }
-
-        a img {
-            width: 100%;
-            height: 100%;
-            background-color: #999999AA;
-            border-radius: 5px;
-        }
-        
-        span a {
-            margin: 0 15px;
-            height: 50%;
-        }
-
-        span {
-            display: flex;
-            align-items: center;
-            width: 100%;
-        }
-
-
-    </style>
-
 </head>
 <body>
     
-    <div> 
-        <a href="scripts/creation_pages.php"><p>Créer une nouvelle page</p></a>
-        <a href="scripts/televerser_page.php"><p>Téléverser une nouvelle page</p></a>
-    </div>
+    <section id="actions-pages"> 
+        <a href="scripts/creation_pages.php" class="bouton"><p>Créer une nouvelle page</p></a>
+        <a href="scripts/televerser_page.php" class="bouton"><p>Téléverser une nouvelle page</p></a>
+    </section>
 
 
     <?php
@@ -81,8 +25,6 @@
         // $dossiers = $rf->viewFolders();
         $dossiers = $rf->getFolders();
         
-        print_r($dossiers);
-        echo "<br>";
 
         include 'scripts/connect_bdd.php';
 
@@ -93,8 +35,12 @@
 
         function afficheDossiers($dossiers, $db) {
             
+            echo "<div id='pages'>";
+            
             foreach($dossiers as $dossier)
-                drawFolderDiv($dossier, $db); 
+                drawFolderDiv($dossier, $db);
+
+            echo "</div>";
         }
 
         function drawFolderDiv($dossier, $db) {
@@ -107,18 +53,24 @@
 
             $dossier_infos = $requete -> fetch();
 
-            $icone = $dossier_infos['affiche'] == 1 ? "<img src='img/invisible.png' title='rendre invisible'>" : "<img src='img/visible.png' title='rendre visible'>";
 
-            print_r($dossier_infos);
-            echo "infos : " . count($dossier_infos);
+            if($dossier_infos['affiche'] == 1) {
+                $icone = "<img src='img/invisible.png' title='Rendre invisible'>";
+                echo "<div class='page'>";
+            } else {
+                $icone = "<img src='img/visible.png' title='Rendre visible'>";
+                echo "<div class='page non-visible'>";
+            }
 
-            echo "<div class='page'>";
+            // $icone = $dossier_infos['affiche'] == 1 ? "<img src='img/invisible.png' title='Rendre invisible'>" : "<img src='img/visible.png' title='Rendre visible'>";
+
+            
             echo "<h3><a href='pages/$path' target='_blank'>$dossier</a></h3>";
             echo "<div class='page-option'>";
             echo "<span class='affiche'><a href='scripts/change_affiche.php?page=" . $dossier_infos['id'] . "'>$icone</a></span>";
             echo "<span class='modif'><a href='#'><img src='img/Modifier.png'></a></span>";
-            echo "<span class='telecharger'><a href='pages/$path' download='PAGE : $path.html'><img src='img/download.png'></a></span>";
-            echo "<span class='supp'><a onclick='return confirmation();' href='scripts/delete_page.php?id=" . $dossier_infos['id'] . "&page=$dossier'><img src='img/Supprimer.png'></a></span>";
+            echo "<span class='telecharger'><a href='pages/$path' download='PAGE : $path.html'><img src='img/download.png' title='Télécharger la page'></a></span>";
+            echo "<span class='supp'><a onclick='return confirmation();' href='scripts/delete_page.php?id=" . $dossier_infos['id'] . "&page=$dossier'><img src='img/Supprimer.png' title='Supprimer la page'></a></span>";
             echo "</div>";
             echo "</div>";
 

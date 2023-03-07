@@ -30,7 +30,7 @@
             echo $gp->getUrl();
             print_r($_POST);
             
-            // header('Location: ../accueil.php');
+            header('Location: ../accueil.php');
         }    
     }
     
@@ -61,7 +61,7 @@
 
                 <input type="text" name="titre" id="titre" placeholder="Titre de la page" required/>
                 <textarea name='textarea' id='MyTextArea'></textarea>
-                <input type="submit" value="envoyer">
+                <input type="submit" value="Créer la page" class="bouton">
             </form>
 
         </main>
