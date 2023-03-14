@@ -38,9 +38,9 @@
             
             echo "<div id='pages'>";
             
-            if(count($dossiers) > 1) {
+            if(count($dossiers) > 2) {
                 foreach($dossiers as $dossier)
-                    if($dossier != "img_temp")
+                    if($dossier != "img_temp" && $dossier != "desktop.ini")
                         drawFolderDiv($dossier, $db);
             } else {
                 echo "<h3 style=''>Aucune page prête à être affichée</h3>";

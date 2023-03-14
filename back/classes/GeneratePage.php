@@ -12,13 +12,12 @@
         public function __construct(string $dossier, string $title, string $content) {
 
             $this->pageTitle = $this->spaceToDash($title);
-            $this->title     = $title;
+            $this->title     = $dossier;
             $this->content   = $content;
-            $this->dossier   = $dossier;
+            $this->dossier   = $this->spaceToDash($dossier);
         }
 
         public function spaceToDash(string $s):string {
-
             return strtolower(str_replace(" ", "-", $s));
         }
 
@@ -84,6 +83,7 @@
 
             $schema = $db -> prepare('SELECT date, auteur FROM pages WHERE dossier LIKE ?');
             $schema -> execute(array($this->dossier));
+
 
             $infos = $schema -> fetch(); 
             echo $schema -> rowCount();
