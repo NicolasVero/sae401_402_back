@@ -40,7 +40,8 @@
             
             if(count($dossiers) > 0) {
                 foreach($dossiers as $dossier)
-                    drawFolderDiv($dossier, $db);
+                    if($dossier != "img_temp")
+                        drawFolderDiv($dossier, $db);
             } else {
                 echo "<h3>Aucune page prête à être affichée</h3>";
             }

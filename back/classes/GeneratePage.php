@@ -26,7 +26,6 @@
             return $this->dossier;
         }
 
-        //! return bool ? 
         public function generateFolder() {
             
             if(!file_exists(self::PATH . $this->pageTitle)) 
