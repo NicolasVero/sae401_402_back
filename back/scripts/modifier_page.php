@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="../styles/style.css">
+    <title>Modifier une page</title>
 </head>
 <body>
     
     <script src="../tinymce/tinymce.min.js" ></script>
     <script src="init_tinymce.js"></script>
+
+    <main>
 
     <?php
         
@@ -27,7 +30,6 @@
         $texte = $pages_infos['contenu'];
         $date  = $pages_infos['date'];
         $id    = $pages_infos['id'];
-
 
 
         if(isset($_POST['id'])) {
@@ -62,31 +64,33 @@
             header("Location: ../accueil.php");
         }
 
-        print "<form action='modifier_page.php' method='POST' enctype='multipart/form-data'>
-        <label for='titre'>Titre :</label>
-        <input type='text' name='titre' id='titre' value=$titre required>
-        <label for='date'>Date :</label>
-        <input type='date' name='date' id='date' value=$date required>
-            </p>
-            <div>
-            <div class='MyTextArea'>
+        print "
+        <form action='modifier_page.php' method='POST' enctype='multipart/form-data'>
+        
+            <div id='creer-form-data'>
+                <input class='form-input-text' type='text' name='titre' id='titre' value=$titre placeholder='Titre de la page' required>
+                <input style='height: 30px;' type='date' name='date' id='date' value=$date required>
+            </div>
+
+            <div class='MyTextArea' style='margin: 30px 0;'>
                 <textarea name='texte' id='MyTextArea'>$texte</textarea>
-                <p>
             </div>
-            </div>
+
             <input type='hidden' value=$id name='id'>
-        <input type='submit' value='envoyer'>
-            </p>
-        </form>
-        </fieldset>
-        </div>";
+            
+            <div style='display: flex;'>
+                <input style='margin: 0 auto;' type='submit' value='Envoyer' class='bouton'>
+            </div>
+        </form>";
 
 
         function spaceToDash(string $s):string {
-
             return strtolower(str_replace(" ", "-", $s));
         }
+
     ?>
+
+    </main>
 
 </body>
 </html>
