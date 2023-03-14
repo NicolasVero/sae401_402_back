@@ -55,6 +55,10 @@
             $this->url = $url;
         }
 
+        public function getDossier() {
+            return $this->dossier;
+        }
+
         public function remplir_bdd() {
 
             include '../scripts/connect_bdd.php';

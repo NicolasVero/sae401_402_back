@@ -28,6 +28,8 @@
             
             echo $gp->getUrl();
             print_r($_POST);
+
+            $gp->moveFiles("../pages/img_temp/", "../pages/" . $p->getDossier() . "/images/");
             
             header('Location: ../accueil.php');
         }    

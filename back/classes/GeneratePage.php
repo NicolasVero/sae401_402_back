@@ -97,7 +97,7 @@
                 </main>
 
                 <footer>
-                <p>Fait le " . $infos['date'] . " par " . $infos['auteur'] . "</p>
+                    <p>Fait le " . $infos['date'] . " par " . $infos['auteur'] . "</p>
                 </footer>
                 
                 </body>
@@ -111,6 +111,11 @@
 
         public function redirectOnPage():void {
             header("Location: " . self::PATH . $this->pageTitle . ".html");
+        }
+
+        public function moveFiles($source, $destination) {
+            rename($source, $destination);
+
         }
 
     }
