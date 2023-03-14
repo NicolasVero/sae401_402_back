@@ -66,8 +66,8 @@
                 echo "<div class='page non-visible'>";
             }
             
-            echo "<div style='display: flex;'><h3 style='margin: 0px;'><a style='padding: 10px;'href='pages/$path' target='_blank'>$dossier</a></h3>";
-            echo "<p style='transform: translateX(-15px);'> - Ajoutée le " . $dossier_infos['date'] . "</p></div>";
+            echo "<div class='page-infos'><h3><a href='pages/$path' target='_blank'>$dossier</a></h3>";
+            echo "<p><i>" . $dossier_infos['type'] . "</i> - Page ajoutée le " . $dossier_infos['date'] . "</p></div>";
             echo "<div class='page-option'>";
             echo "<span class='affiche'><a href='scripts/change_affiche.php?page=" . $dossier_infos['id'] . "'>$icone</a></span>";
             echo "<span class='modif'><a href='#'><img src='img/Modifier.png'></a></span>";
@@ -79,11 +79,13 @@
 
         }
 
+        //! deprecated
         function afficheFichiers($page, $db) {
             foreach ($pages as $page) 
                 drawPageDiv($page, $db);  
         }
 
+        //! deprecated
         function drawPageDiv($page, $db) {
 
             $schema = "SELECT id, affiche FROM pages WHERE tiny_url = ?";

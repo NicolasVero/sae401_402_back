@@ -24,10 +24,9 @@ html, body {
 /* Accueil */
 
 #pages {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 2rem;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
 }
 
 div.page {
@@ -41,13 +40,25 @@ div.page {
     justify-content: space-between;
 }
 
-.page h3 {
-    padding: 15px;
-}
-
 div.page-option {
     display: flex;
     height: 100%; 
+}
+
+.page-infos {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 20px;
+}
+
+.page-infos h3 {
+    margin: 0;
+    margin-bottom: 3px;
+}
+
+.page-infos p {
+    margin-top: 0;
 }
 
 .page a {
@@ -88,7 +99,6 @@ span {
     align-items: center;
     width: 100%;
 }
-
 
 #actions-pages {
     display: flex;
