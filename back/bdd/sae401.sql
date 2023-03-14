@@ -45,9 +45,6 @@ CREATE TABLE `pages` (
 -- Déchargement des données de la table `pages`
 --
 
-INSERT INTO `pages` (`id`, `dossier`, `titre`, `contenu`, `type`, `affiche`, `url`, `tiny_url`, `style`, `date`, `auteur`) VALUES
-(101, 'nicoco', 'Nicoco', 'null', 'actu', 1, './back/pages/nicoco/nicoco.html', 'nicoco.html', 'style.css', '2023-03-07', 'Nicolas Vero');
-
 --
 -- Index pour les tables déchargées
 --

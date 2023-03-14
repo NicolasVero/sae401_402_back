@@ -20,3 +20,4 @@
 ° sécurité site => faire avec session ?
 //!° mettre deuxieme argument index pour récuperer nbr article que l'on veut (ne marche pas quand param utilisé)
 // ° ajouté selection actu ou projet quand televersement
+° faire le htacces
