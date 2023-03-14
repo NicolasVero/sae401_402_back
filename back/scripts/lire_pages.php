@@ -8,7 +8,7 @@
         echo "<b>Pages $type : </b><br/>";
 
         while ( $page = $schema -> fetch() ) {
-            echo "Page : <a href='" . $page['url'] . "' target='_blank' />" . $page['titre'] . "</a><br>";
+            echo "Page : <a href='" . $page['url'] . "' target='_blank' />" . $page['dossier'] . "</a><br>";
         }
     }
 ?>

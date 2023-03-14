@@ -16,18 +16,20 @@
         include '../classes/GeneratePage.php';
         include '../classes/Page.php';
         
-        $gp = new GeneratePage($_POST['titre'], $_POST['textarea']);
+        // $gp = new GeneratePage($_POST['titre'], $_POST['textarea']);
+        $gp = new GeneratePage($_POST['titre'], "index", $_POST['textarea']);
         
         if($gp->generateFolder()) {
          
-            $p = new Page($gp->getDossier(), $_POST['titre'], $_POST['textarea'], $_POST['type'], $gp->getUrl(), "style.css", $_POST['auteur']);
+            // $p = new Page($gp->getDossier(), $_POST['titre'], $_POST['textarea'], $_POST['type'], $gp->getUrl(), "style.css", $_POST['auteur']);
+            $p = new Page($gp->getDossier(), "index", $_POST['textarea'], $_POST['type'], $gp->getUrl(), "style.css", $_POST['auteur']);
             $gp->generateImagesFolder();
             $p->remplir_bdd();
             $gp->generateHTMLFile();
             
             
-            echo $gp->getUrl();
-            print_r($_POST);
+            // echo $gp->getUrl();
+            // print_r($_POST);
 
             $gp->moveFiles("../pages/img_temp/", "../pages/" . $p->getDossier() . "/images/");
             

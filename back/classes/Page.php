@@ -22,7 +22,7 @@
             $this->texte      = $texte;
             $this->type       = $type;
             $this->style      = $style;
-            $this->url        = self::PATH . Page::spaceToDash($this->titre) . "/" . $url;
+            $this->url        = self::PATH . Page::spaceToDash($this->dossier);
             $this->tiny_url   = $url;
             $this->date       = Page::donnerDate();
             $this->auteur     = $auteur;

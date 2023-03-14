@@ -51,7 +51,8 @@
 
         function drawFolderDiv($dossier, $db) {
         
-            $path = $dossier . "/" . $dossier . ".html";
+            // $path = $dossier . "/" . $dossier . ".html";
+            $path = $dossier . "/";
 
             $schema = "SELECT id, affiche, date, type FROM pages WHERE dossier = ?";
             $requete = $db -> prepare($schema);
@@ -71,7 +72,7 @@
             echo "<p><i>" . $dossier_infos['type'] . "</i> - Page ajoutée le " . $dossier_infos['date'] . "</p></div>";
             echo "<div class='page-option'>";
             echo "<span class='affiche'><a href='scripts/change_affiche.php?page=" . $dossier_infos['id'] . "'>$icone</a></span>";
-            echo "<span class='modif'><a href='#'><img src='img/Modifier.png'></a></span>";
+            echo "<span class='modif'><a href='scripts/modifier_page.php?page= " . $dossier_infos['id'] . "'><img src='img/Modifier.png'></a></span>";
             //! voir dl dossier en entier 
             echo "<span class='telecharger'><a href='pages/$dossier/' download='PAGE : $dossier/'><img src='img/download.png' title='Télécharger la page'></a></span>";
             echo "<span class='supp'><a onclick='return confirmation();' href='scripts/delete_page.php?id=" . $dossier_infos['id'] . "&page=$dossier'><img src='img/Supprimer.png' title='Supprimer la page'></a></span>";
