@@ -21,4 +21,7 @@
 // ° mettre deuxieme argument index pour récuperer nbr article que l'on veut (ne marche pas quand param utilisé)
 // ° ajouté selection actu ou projet quand televersement
 ° faire le htacces
-° voir pour modifier des pages qui ont été téléversées 
+° voir pour modifier des pages qui ont été téléversées (
+    => soit empeché  --> rajouter attribut "estModifiable" dans bdd
+    => soit autorisé --> pouvoir mettre le texte de la page HTML dans la bdd
+)
