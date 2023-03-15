@@ -10,7 +10,7 @@
 
   
 
-   $imageFolder = "../pages/img/images/";
+   $imageFolder = "../pages//images/";
 
   if (isset($_SERVER['HTTP_ORIGIN'])) {
     // same-origin requests won't set an origin. If the origin is set, it must be valid.
