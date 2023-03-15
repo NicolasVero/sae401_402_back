@@ -2,7 +2,7 @@
 // ° gerer pages actus et pages projets 
 // ° voir problemes upload images 
 // ° demander mdp quand suppression d'une page 
-° permettre modification d'une page existante 
+// ° permettre modification d'une page existante 
 ° permettre de changer la feuille de style 
 // ° permettre televersement pages externes 
 // ° changer date (probleme bdd -> mauvaise date)
@@ -12,11 +12,16 @@
 ° probleme images dossier (mail carpentier -> solution : faire televerser images apres depuis accueil.php ?)
  OU mettre images dans un dossier centralisé, et bouger toutes les images vers dossier final quand page créée
 
-
 // ° afficher message quand aucune page dans accueil.php
 // ° dossier et fichiers pas en minuscule et tiret au lieu des espaces quand televersement
 // ° completer données constructeurs classes (données brutes -> auteur quand televersement par exemple)
-° différencier actu et projet
+// ° différencier actu et projet
 ° bouton telechargement -> telecharger directement le dossier
 ° sécurité site => faire avec session ?
+// ° mettre deuxieme argument index pour récuperer nbr article que l'on veut (ne marche pas quand param utilisé)
 // ° ajouté selection actu ou projet quand televersement
+° faire le htacces
+° voir pour modifier des pages qui ont été téléversées (
+    => soit empeché  --> rajouter attribut "estModifiable" dans bdd
+    => soit autorisé --> pouvoir mettre le texte de la page HTML dans la bdd
+)

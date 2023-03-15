@@ -38,11 +38,12 @@
             
             echo "<div id='pages'>";
             
-            if(count($dossiers) > 0) {
+            if(count($dossiers) > 2) {
                 foreach($dossiers as $dossier)
-                    drawFolderDiv($dossier, $db);
+                    if($dossier != "img_temp" && $dossier != "desktop.ini")
+                        drawFolderDiv($dossier, $db);
             } else {
-                echo "<h3>Aucune page prête à être affichée</h3>";
+                echo "<h3 style=''>Aucune page prête à être affichée</h3>";
             }
 
             echo "</div>";
@@ -50,7 +51,8 @@
 
         function drawFolderDiv($dossier, $db) {
         
-            $path = $dossier . "/" . $dossier . ".html";
+            // $path = $dossier . "/" . $dossier . ".html";
+            $path = $dossier . "/";
 
             $schema = "SELECT id, affiche, date, type FROM pages WHERE dossier = ?";
             $requete = $db -> prepare($schema);
@@ -66,11 +68,11 @@
                 echo "<div class='page non-visible'>";
             }
             
-            echo "<div style='display: flex;'><h3 style='margin: 0px;'><a style='padding: 10px;'href='pages/$path' target='_blank'>$dossier</a></h3>";
-            echo "<p style='transform: translateX(-15px);'> - Ajoutée le " . $dossier_infos['date'] . "</p></div>";
+            echo "<div class='page-infos'><h3><a href='pages/$path' target='_blank'>$dossier</a></h3>";
+            echo "<p><i>" . $dossier_infos['type'] . "</i> - Page ajoutée le " . $dossier_infos['date'] . "</p></div>";
             echo "<div class='page-option'>";
             echo "<span class='affiche'><a href='scripts/change_affiche.php?page=" . $dossier_infos['id'] . "'>$icone</a></span>";
-            echo "<span class='modif'><a href='#'><img src='img/Modifier.png'></a></span>";
+            echo "<span class='modif'><a href='scripts/modifier_page.php?page= " . $dossier_infos['id'] . "'><img src='img/Modifier.png'></a></span>";
             //! voir dl dossier en entier 
             echo "<span class='telecharger'><a href='pages/$dossier/' download='PAGE : $dossier/'><img src='img/download.png' title='Télécharger la page'></a></span>";
             echo "<span class='supp'><a onclick='return confirmation();' href='scripts/delete_page.php?id=" . $dossier_infos['id'] . "&page=$dossier'><img src='img/Supprimer.png' title='Supprimer la page'></a></span>";
@@ -79,11 +81,13 @@
 
         }
 
+        //! deprecated
         function afficheFichiers($page, $db) {
             foreach ($pages as $page) 
                 drawPageDiv($page, $db);  
         }
 
+        //! deprecated
         function drawPageDiv($page, $db) {
 
             $schema = "SELECT id, affiche FROM pages WHERE tiny_url = ?";

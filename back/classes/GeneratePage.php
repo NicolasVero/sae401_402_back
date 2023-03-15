@@ -9,16 +9,15 @@
         private string $content;
         private string $dossier;
     
-        public function __construct(string $title, string $content) {
+        public function __construct(string $dossier, string $title, string $content) {
 
             $this->pageTitle = $this->spaceToDash($title);
-            $this->title     = $title;
+            $this->title     = $dossier;
             $this->content   = $content;
-            $this->dossier   = $this->pageTitle;
+            $this->dossier   = $this->spaceToDash($dossier);
         }
 
         public function spaceToDash(string $s):string {
-
             return strtolower(str_replace(" ", "-", $s));
         }
 
@@ -26,11 +25,10 @@
             return $this->dossier;
         }
 
-        //! return bool ? 
         public function generateFolder() {
             
-            if(!file_exists(self::PATH . $this->pageTitle)) 
-                return mkdir(self::PATH . $this->pageTitle);
+            if(!file_exists(self::PATH . $this->dossier)) 
+                return mkdir(self::PATH . $this->dossier);
 
             return false;
         }
@@ -38,12 +36,13 @@
 
         public function generateImagesFolder():void {
 
-            mkdir(self::PATH . $this->pageTitle . "/images/");
+            mkdir(self::PATH . $this->dossier . "/images/");
         }
 
         public function generateHTMLFile():void {
 
-            $open = fopen(self::PATH  . $this->pageTitle . "/" . $this->pageTitle . '.html', 'w');
+            $open = fopen(self::PATH  . $this->dossier . '/index.html', 'w');
+            // $open = fopen(self::PATH  . $this->dossier . "/" . $this->pageTitle . '.html', 'w');
             fwrite($open, $this->buildHTML());
             fclose($open);
         }
@@ -85,6 +84,7 @@
             $schema = $db -> prepare('SELECT date, auteur FROM pages WHERE dossier LIKE ?');
             $schema -> execute(array($this->dossier));
 
+
             $infos = $schema -> fetch(); 
             echo $schema -> rowCount();
 
@@ -98,7 +98,7 @@
                 </main>
 
                 <footer>
-                <p>Fait le " . $infos['date'] . " par " . $infos['auteur'] . "</p>
+                    <p>Fait le " . $infos['date'] . " par " . $infos['auteur'] . "</p>
                 </footer>
                 
                 </body>
@@ -112,6 +112,11 @@
 
         public function redirectOnPage():void {
             header("Location: " . self::PATH . $this->pageTitle . ".html");
+        }
+
+        public function moveFiles($source, $destination) {
+            rename($source, $destination);
+
         }
 
     }

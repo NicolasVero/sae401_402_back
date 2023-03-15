@@ -22,7 +22,7 @@
             $this->texte      = $texte;
             $this->type       = $type;
             $this->style      = $style;
-            $this->url        = self::PATH . Page::spaceToDash($this->titre) . "/" . $url;
+            $this->url        = self::PATH . Page::spaceToDash($this->dossier);
             $this->tiny_url   = $url;
             $this->date       = Page::donnerDate();
             $this->auteur     = $auteur;
@@ -53,6 +53,10 @@
 
         public function setURL($url):void {
             $this->url = $url;
+        }
+
+        public function getDossier() {
+            return $this->dossier;
         }
 
         public function remplir_bdd() {

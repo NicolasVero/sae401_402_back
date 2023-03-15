@@ -2,8 +2,6 @@
 
     class ReadFiles {
 
-        // const FOLDER_NAME = './pages';
-
         private string $folder_name;
         private $scandir;
 
@@ -11,7 +9,6 @@
 
             $this->folder_name = $folder_name;
             $this->scandir = scandir($this->folder_name);
-            // $this->scandir = scandir(self::FOLDER_NAME);
         }
 
         public function viewFolders() {
@@ -21,13 +18,13 @@
 
         public function getFolders() {
 
-            $files = array();
+            $folders = array();
 
-            foreach($this->scandir as $fichier)
-                if($fichier != "." && $fichier != "..")
-                    $files[] = $fichier;
+            foreach($this->scandir as $dossier)
+                if($dossier != "." && $dossier != "..")
+                    $folders[] = $dossier;
 
-            return $files;
+            return $folders;
         }
 
         public function viewAllFiles() {
