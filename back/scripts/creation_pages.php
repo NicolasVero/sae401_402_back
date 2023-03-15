@@ -16,20 +16,15 @@
         include '../classes/GeneratePage.php';
         include '../classes/Page.php';
         
-        // $gp = new GeneratePage($_POST['titre'], $_POST['textarea']);
         $gp = new GeneratePage($_POST['titre'], "index", $_POST['textarea']);
         
         if($gp->generateFolder()) {
          
-            // $p = new Page($gp->getDossier(), $_POST['titre'], $_POST['textarea'], $_POST['type'], $gp->getUrl(), "style.css", $_POST['auteur']);
             $p = new Page($gp->getDossier(), "index", $_POST['textarea'], $_POST['type'], $gp->getUrl(), "style.css", $_POST['auteur']);
             $gp->generateImagesFolder();
             $p->remplir_bdd();
             $gp->generateHTMLFile();
             
-            
-            // echo $gp->getUrl();
-            // print_r($_POST);
 
             $gp->moveFiles("../pages/img_temp/", "../pages/" . $p->getDossier() . "/images/");
             
@@ -39,8 +34,6 @@
     
     ?>
 
-
-
         <script src="../tinymce/tinymce.min.js" ></script>
 
         <main>
@@ -48,11 +41,6 @@
             <script src="init_tinymce.js"></script>
 
             <form id="creer-form" action='creation_pages.php' method='POST' enctype="multipart/form-data">
-                <!-- <fieldset> -->
-                    <!-- <legend>De quel type de page s'agit </legend> -->
-
-
-                <!-- </fieldset> -->
                 
                 <div id="creer-form-data">
                     <input class="form-input-text" type="text" name="titre" id="titre" placeholder="Titre de la page" required/>
@@ -66,7 +54,6 @@
                     </div>
                 </div>   
                 
-
                 <textarea name='textarea' id='MyTextArea'></textarea>
                 <input style="margin: 0 auto;" type="submit" value="Créer la page" class="bouton">
             </form>

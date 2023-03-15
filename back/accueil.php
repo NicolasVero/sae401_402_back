@@ -15,15 +15,12 @@
         <a href="scripts/televerser_page.php" class="bouton"><p>Téléverser une nouvelle page</p></a>
     </section>
 
-
     <?php
     
         include 'classes/ReadFiles.php';
         
         $rf = new ReadFiles("./pages/");
-        // $rf->viewAllFiles();
         $pages = $rf->getHTMLFiles();
-        // $dossiers = $rf->viewFolders();
         $dossiers = $rf->getFolders();
         
 
@@ -31,14 +28,11 @@
 
         afficheDossiers($dossiers, $db);
 
-
-
-
         function afficheDossiers($dossiers, $db) {
             
             echo "<div id='pages'>";
             
-            if(count($dossiers) > 2) {
+            if(count($dossiers) > 1) {
                 foreach($dossiers as $dossier)
                     if($dossier != "img_temp" && $dossier != "desktop.ini")
                         drawFolderDiv($dossier, $db);
@@ -51,7 +45,6 @@
 
         function drawFolderDiv($dossier, $db) {
         
-            // $path = $dossier . "/" . $dossier . ".html";
             $path = $dossier . "/";
 
             $schema = "SELECT id, affiche, date, type FROM pages WHERE dossier = ?";
@@ -74,7 +67,7 @@
             echo "<span class='affiche'><a href='scripts/change_affiche.php?page=" . $dossier_infos['id'] . "'>$icone</a></span>";
             echo "<span class='modif'><a href='scripts/modifier_page.php?page= " . $dossier_infos['id'] . "'><img src='img/Modifier.png'></a></span>";
             //! voir dl dossier en entier 
-            echo "<span class='telecharger'><a href='pages/$dossier/' download='PAGE : $dossier/'><img src='img/download.png' title='Télécharger la page'></a></span>";
+            echo "<span class='telecharger'><a href='pages/$dossier' download='$dossier'><img src='img/download.png' title='Télécharger la page'></a></span>";
             echo "<span class='supp'><a onclick='return confirmation();' href='scripts/delete_page.php?id=" . $dossier_infos['id'] . "&page=$dossier'><img src='img/Supprimer.png' title='Supprimer la page'></a></span>";
             echo "</div>";
             echo "</div>";

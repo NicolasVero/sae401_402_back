@@ -6,7 +6,6 @@
     $supprimerPage = $db -> prepare($schema);
     $supprimerPage -> execute(array($_GET['id']));
 
-    // unlink("../pages/" . $_GET['page']);
     remove_dir("../pages/" . $_GET['page']);
     header("Location: ../accueil.php");
 
