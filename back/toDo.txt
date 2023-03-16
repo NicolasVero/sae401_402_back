@@ -28,4 +28,5 @@
 )
 ° permettre de changer la feuille de style 
 
+//? ° est ce derangeant pas image quand modif ?
 //! ° changer nombre de fichier pour afficher "aucune page n'est disponible" dans accueil (desktop.ini)
