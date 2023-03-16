@@ -25,8 +25,8 @@
             $p->remplir_bdd();
             $gp->generateHTMLFile();
             
-
-            $gp->moveFiles("../pages/img_temp/", "../pages/" . $p->getDossier() . "/images/");
+            
+            rename("../pages/img_temp/", "../pages/" . $p->getDossier() . "/images/");
             
             header('Location: ../accueil.php');
         }    

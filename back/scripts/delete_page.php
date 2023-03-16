@@ -22,7 +22,7 @@
 
             reset($objects);
             rmdir($dir);
-            }
         }
+    }
 
 ?>

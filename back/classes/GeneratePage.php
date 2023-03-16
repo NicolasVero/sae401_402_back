@@ -114,11 +114,6 @@
             header("Location: " . self::PATH . $this->pageTitle . ".html");
         }
 
-        public function moveFiles($source, $destination) {
-            rename($source, $destination);
-
-        }
-
     }
 
 ?>

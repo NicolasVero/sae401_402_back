@@ -12,6 +12,6 @@ tinymce.init({
     // images_upload_url: 'postAcceptor.php',
     images_upload_url: 'upload.php',
     // automatic_uploads: false,
-    // images_upload_base_path: '/images',
+    images_upload_base_path: '/images',
     // images_file_types: 'jpg,svg,webp,png'
 });
