@@ -16,22 +16,55 @@
         include '../classes/GeneratePage.php';
         include '../classes/Page.php';
         
+        $files = getImagesFiles(scandir('../pages/img_temp'));
 
+        print_r($files);
         $texte = str_replace('<img src="../pages/img_temp/', '<img src="./images/', $_POST['textarea']);
-        // rename("../pages/img_temp/", "../pages/" . $p->getDossier() . "/images/");
+
+        foreach($files as $file) {
+            // rename("back/pages/img_temp/$file", "back/pages/" . $_POST['titre'] . "/images/$file");
+            moveFile("../pages/img_temp/$file", "../pages/" . $_POST['titre'] . "/images/$file");
+        }
         
         $gp = new GeneratePage($_POST['titre'], "index", $texte);
         
         if($gp->generateFolder()) {
-         
+        
             $p = new Page($gp->getDossier(), "index", $texte, $_POST['type'], $gp->getUrl(), "style.css", $_POST['auteur']);
             $gp->generateImagesFolder();
             $p->remplir_bdd();
             $gp->generateHTMLFile();
 
-            header('Location: ../accueil.php');
+            // header('Location: ../accueil.php');
         }    
     }
+
+    function getImagesFiles($scan) {
+        $files = array();
+
+        foreach($scan as $fichier)
+            if(preg_match("/.jpg$|.jpeg$|.png$/", $fichier) >= 1) 
+                $files[] = $fichier;
+
+        return $files;
+    }
+
+    function moveFile($dossierSource , $dossierDestination){
+
+        $retour = 1; 
+        if(!file_exists($dossierSource)) { 
+         $retour = -1; 
+        } else { 
+         if(!copy($dossierSource, $dossierDestination)) { 
+         $retour = -2; 
+         } else { 
+         if(!unlink($dossierSource)) { 
+         $retour = -3; 
+         } 
+         } 
+        } 
+        return($retour);
+       }
     
     ?>
 
