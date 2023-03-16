@@ -35,7 +35,7 @@
                 moveFile("../pages/img_temp/$file", "../pages/" . $_POST['titre'] . "/images/$file");
             }
 
-            // header('Location: ../accueil.php');
+            header('Location: ../accueil.php');
         }    
     }
 
