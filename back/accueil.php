@@ -72,7 +72,7 @@
             if($dossier_infos['contenu'] != "null") 
                 echo "<span class='modif'><a href='scripts/modifier_page.php?page= " . $dossier_infos['id'] . "'><img src='img/Modifier.png' title='Modifier une page'></a></span>";
             //! voir dl dossier en entier 
-            echo "<span class='telecharger'><a href='pages/$dossier' download='$dossier'><img src='img/download.png' title='Télécharger la page'></a></span>";
+            echo "<span class='telecharger'><a href='scripts/zip_files.php?dossier=$dossier'><img src='img/download.png' title='Télécharger la page'></a></span>";
             echo "<span class='supp'><a onclick='return confirmation();' href='scripts/delete_page.php?id=" . $dossier_infos['id'] . "&page=$dossier'><img src='img/Supprimer.png' title='Supprimer la page'></a></span>";
             echo "</div>";
             echo "</div>";
