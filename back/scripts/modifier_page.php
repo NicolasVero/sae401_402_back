@@ -15,7 +15,8 @@
     <main>
 
     <?php
-        
+
+        include 'verif_session.php';     
         include 'connect_bdd.php';
 
         $requete = $db -> prepare("SELECT * FROM pages WHERE id = ?");

@@ -11,6 +11,8 @@
 
     <?php
     
+        include 'verif_session.php';
+
         if(isset($_FILES['html']['name'])) {
 
             include 'connect_bdd.php';

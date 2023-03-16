@@ -10,6 +10,8 @@
     <body>
 
     <?php
+
+    include 'verif_session.php';
     
     if(isset($_POST['textarea'])) {
 
@@ -17,8 +19,6 @@
         include '../classes/Page.php';
         
         $files = getImagesFiles(scandir('../pages/img_temp'));
-
-        print_r($files);
         $texte = str_replace('<img src="../pages/img_temp/', '<img src="./images/', $_POST['textarea']);
         
         $gp = new GeneratePage($_POST['titre'], "index", $texte);
@@ -31,8 +31,9 @@
             $gp->generateHTMLFile();
 
             foreach($files as $file) {
-                // rename("back/pages/img_temp/$file", "back/pages/" . $_POST['titre'] . "/images/$file");
-                moveFile("../pages/img_temp/$file", "../pages/" . $_POST['titre'] . "/images/$file");
+                if(!moveFile("../pages/img_temp/$file", "../pages/" . $_POST['titre'] . "/images/$file")) {
+                    break;
+                }
             }
 
             header('Location: ../accueil.php');
@@ -51,21 +52,13 @@
 
     function moveFile($dossierSource , $dossierDestination){
 
-        $retour = 1; 
-        if(!file_exists($dossierSource)) { 
-         $retour = -1; 
-        } else { 
-         if(!copy($dossierSource, $dossierDestination)) { 
-         $retour = -2; 
-         } else { 
-         if(!unlink($dossierSource)) { 
-         $retour = -3; 
-         } 
-         } 
-        } 
-        return($retour);
-       }
-    
+        if(!file_exists($dossierSource)) return false;  
+        if(!copy($dossierSource, $dossierDestination)) return false; 
+        if(!unlink($dossierSource)) return false;
+        
+        return true;
+    }
+
     ?>
 
         <script src="../tinymce/tinymce.min.js" ></script>

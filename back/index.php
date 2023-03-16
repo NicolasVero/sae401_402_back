@@ -12,10 +12,20 @@
 <body>
 
     <?php
+
+        session_start();
+        session_unset();
+        session_destroy();
     
-        if(isset($_POST['password'])) 
-            if($_POST['username'] == 'admin' && $_POST['password'] == '1234')
+        if(isset($_POST['password'])) {
+            if($_POST['username'] == 'admin' && $_POST['password'] == '1234') {
+
+                session_start();
+                $_SESSION['username'] = $_POST['username'];
+
                 header('Location: accueil.php');
+            }
+        }
 
     ?>
 
