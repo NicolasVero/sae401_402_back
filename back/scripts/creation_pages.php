@@ -20,11 +20,6 @@
 
         print_r($files);
         $texte = str_replace('<img src="../pages/img_temp/', '<img src="./images/', $_POST['textarea']);
-
-        foreach($files as $file) {
-            // rename("back/pages/img_temp/$file", "back/pages/" . $_POST['titre'] . "/images/$file");
-            moveFile("../pages/img_temp/$file", "../pages/" . $_POST['titre'] . "/images/$file");
-        }
         
         $gp = new GeneratePage($_POST['titre'], "index", $texte);
         
@@ -34,6 +29,11 @@
             $gp->generateImagesFolder();
             $p->remplir_bdd();
             $gp->generateHTMLFile();
+
+            foreach($files as $file) {
+                // rename("back/pages/img_temp/$file", "back/pages/" . $_POST['titre'] . "/images/$file");
+                moveFile("../pages/img_temp/$file", "../pages/" . $_POST['titre'] . "/images/$file");
+            }
 
             // header('Location: ../accueil.php');
         }    

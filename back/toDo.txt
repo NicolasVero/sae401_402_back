@@ -24,3 +24,5 @@
     => soit autorisé --> pouvoir mettre le texte de la page HTML dans la bdd
 )
 ° permettre de changer la feuille de style 
+
+//! ° changer nombre de fichier pour afficher "aucune page n'est disponible" dans accueil (desktop.ini)
