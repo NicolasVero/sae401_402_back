@@ -16,18 +16,19 @@
         include '../classes/GeneratePage.php';
         include '../classes/Page.php';
         
-        $gp = new GeneratePage($_POST['titre'], "index", $_POST['textarea']);
+
+        $texte = str_replace('<img src="../pages/img_temp/', '<img src="./images/', $_POST['textarea']);
+        // rename("../pages/img_temp/", "../pages/" . $p->getDossier() . "/images/");
+        
+        $gp = new GeneratePage($_POST['titre'], "index", $texte);
         
         if($gp->generateFolder()) {
          
-            $p = new Page($gp->getDossier(), "index", $_POST['textarea'], $_POST['type'], $gp->getUrl(), "style.css", $_POST['auteur']);
+            $p = new Page($gp->getDossier(), "index", $texte, $_POST['type'], $gp->getUrl(), "style.css", $_POST['auteur']);
             $gp->generateImagesFolder();
             $p->remplir_bdd();
             $gp->generateHTMLFile();
-            
-            
-            rename("../pages/img_temp/", "../pages/" . $p->getDossier() . "/images/");
-            
+
             header('Location: ../accueil.php');
         }    
     }
