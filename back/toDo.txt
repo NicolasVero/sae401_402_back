@@ -18,7 +18,10 @@
 
 ° bouton telechargement -> telecharger directement le dossier
 ° sécurité site => faire avec session ?
-° faire le htacces
+° faire le htacces (
+    => faire pages erreur 404 et 403
+    => faire récriture d'url
+)
 ° voir pour modifier des pages qui ont été téléversées (
     => soit empeché  --> rajouter attribut "estModifiable" dans bdd
     => soit autorisé --> pouvoir mettre le texte de la page HTML dans la bdd
