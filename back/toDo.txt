@@ -19,7 +19,7 @@
 ° bouton telechargement -> telecharger directement le dossier
 ° sécurité site => faire avec session ?
 ° faire le htacces (
-    => faire pages erreur 404 et 403
+//    => faire pages erreur 404 et 403
     => faire récriture d'url
 )
 ° voir pour modifier des pages qui ont été téléversées (
