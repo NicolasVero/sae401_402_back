@@ -64,8 +64,9 @@
                 <!DOCTYPE html>
                 <html>
                 <head>
+                    <link rel='shortcut icon' type='image/png' href='../../img/favicon.png'>
                     <link rel='stylesheet' href='../styles/page-style.css'>
-                    <title>Test</title>
+                    <title>" . $this->title . "</title>
                 </head>
                 <body>
             ";

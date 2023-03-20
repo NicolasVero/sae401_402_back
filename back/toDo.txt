@@ -20,6 +20,7 @@
 //     => soit autorisé --> pouvoir mettre le texte de la page HTML dans la bdd
 // )
 // ° sécurité site => faire avec session ?
+// ° mettre <title> pages créées
 
 ° bouton telechargement -> telecharger directement le dossier
 ° faire le htacces (
@@ -28,7 +29,6 @@
     => voir si possible acceder a des fichiers MAIS interdire acces quand url tappée directement
 )
 ° permettre de changer la feuille de style 
-° mettre <title> pages créées
 ° remplacer detection des fichiers par lecture bdd accueil
 //TODO ° separer création pages en deux ? 
 //TODO   => une partie comme actuellement
