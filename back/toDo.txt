@@ -28,6 +28,11 @@
     => voir si possible acceder a des fichiers MAIS interdire acces quand url tappée directement
 )
 ° permettre de changer la feuille de style 
+° mettre <title> pages créées
+° remplacer detection des fichiers par lecture bdd accueil
+//TODO ° separer création pages en deux ? 
+//TODO   => une partie comme actuellement
+//TODO   => une partie ou l'on écrit simplement, et les images sont par exemple disposées à la fin  
 
 //? ° est ce derangeant pas image quand modif ?
 //! ° changer nombre de fichier pour afficher "aucune page n'est disponible" dans accueil (desktop.ini)
