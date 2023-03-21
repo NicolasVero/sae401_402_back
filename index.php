@@ -12,9 +12,9 @@
 
         include 'back/scripts/lire_pages.php';
 
-        lirePages("projet", 4);
+        get_pages("projet", 4);
         echo "<br>";
-        lirePages("actu", 3);
+        get_pages("actu", 3);
 
     ?>
 

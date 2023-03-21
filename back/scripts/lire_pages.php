@@ -1,5 +1,5 @@
 <?php
-    function lirePages(string $type, $n) {
+    function get_pages(string $type, $n) {
 
         include 'connect_bdd.php';
 
