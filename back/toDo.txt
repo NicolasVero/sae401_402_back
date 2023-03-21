@@ -24,7 +24,7 @@
 // ° image ne vont pas dans bon dossier quand ajout modif
 
 
-° faire script utilitaire (fonctions copiées collées dans certains scripts)
+° faire script utilitaire (fonctions copiées collées dans certains scripts) --> voir fonctions mises dedant
 ° bouton telechargement -> telecharger directement le dossier
 ° faire le htacces (
 //    => faire pages erreur 404 et 403
