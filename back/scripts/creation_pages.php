@@ -12,6 +12,7 @@
     <?php
 
     include 'verif_session.php';
+    include 'utilitaire.php';
     
     if(isset($_POST['textarea'])) {
 
@@ -40,24 +41,6 @@
         }    
     }
 
-    function getImagesFiles($scan) {
-        $files = array();
-
-        foreach($scan as $fichier)
-            if(preg_match("/.jpg$|.jpeg$|.png$/", $fichier) >= 1) 
-                $files[] = $fichier;
-
-        return $files;
-    }
-
-    function moveFile($dossierSource , $dossierDestination){
-
-        if(!file_exists($dossierSource)) return false;  
-        if(!copy($dossierSource, $dossierDestination)) return false; 
-        if(!unlink($dossierSource)) return false;
-        
-        return true;
-    }
 
     ?>
 

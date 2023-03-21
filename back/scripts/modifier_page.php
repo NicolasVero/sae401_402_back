@@ -18,6 +18,7 @@
 
         include 'verif_session.php';     
         include 'connect_bdd.php';
+        include 'utilitaire.php';
 
         $requete = $db -> prepare("SELECT * FROM pages WHERE id = ?");
         if(isset($_POST['id']))
@@ -63,7 +64,7 @@
             }
 
             $requete = $db -> prepare("UPDATE pages SET dossier = ?, contenu = ?, date = ?, url = ? WHERE id = ?");
-            $requete -> execute(array($_POST['titre'], $texte, $_POST['date'], './back/pages/' . spaceToDash($_POST['titre']), $_POST['id']));  
+            $requete -> execute(array(spaceToDash($_POST['titre']), $texte, $_POST['date'], './back/pages/' . spaceToDash($_POST['titre']), $_POST['id']));  
 
             include '../classes/GeneratePage.php';
 
@@ -91,30 +92,6 @@
                 <input style='margin: 0 auto;' type='submit' value='Envoyer' class='bouton'>
             </div>
         </form>";
-
-
-        function spaceToDash(string $s):string {
-            return strtolower(str_replace(" ", "-", $s));
-        }
-
-        function getImagesFiles($scan) {
-            $files = array();
-    
-            foreach($scan as $fichier)
-                if(preg_match("/.jpg$|.jpeg$|.png$/", $fichier) >= 1) 
-                    $files[] = $fichier;
-    
-            return $files;
-        }
-
-        function moveFile($dossierSource , $dossierDestination){
-
-            if(!file_exists($dossierSource)) return false;  
-            if(!copy($dossierSource, $dossierDestination)) return false; 
-            if(!unlink($dossierSource)) return false;
-            
-            return true;
-        }
 
     ?>
 

@@ -12,6 +12,7 @@
     <?php
     
         include 'verif_session.php';
+        include 'utilitaire.php';
 
         if(isset($_FILES['html']['name'])) {
 
@@ -50,10 +51,6 @@
                 
             }
 
-        }
-
-        function spaceToDash(string $s):string {
-            return strtolower(str_replace(" ", "-", $s));
         }
     
     ?>
