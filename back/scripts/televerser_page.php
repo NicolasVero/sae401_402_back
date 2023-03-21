@@ -22,7 +22,7 @@
             mkdir("../pages/" . spaceToDash($_POST['titre']) . "/images/");
 
             $html = array(
-                'name' => $_POST['titre'] . ".html",
+                'name' => "index.html",
                 'size' => $_FILES['html']['size'],
                 'type' => $_FILES['html']['type'],
                 'tmp_name' => $_FILES['html']['tmp_name']
@@ -44,7 +44,7 @@
 
                 include '../classes/Page.php';
 
-                $p = new Page(spaceToDash($_POST['titre']), $_POST['titre'], "null", $_POST['type'], spaceToDash($html['name']), spaceToDash($css['name']), $_POST['auteur']);
+                $p = new Page(spaceToDash($_POST['titre']), "index", "null", $_POST['type'], spaceToDash($html['name']), spaceToDash($css['name']), $_POST['auteur']);
                 $p->remplir_bdd();
 
                 header("Location: ../accueil.php");

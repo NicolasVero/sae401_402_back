@@ -18,7 +18,8 @@
         session_destroy();
     
         if(isset($_POST['password'])) {
-            if($_POST['username'] == 'admin' && $_POST['password'] == '1234') {
+            // admin - mmi2023
+            if($_POST['username'] == 'admin' && hash('sha256', $_POST['password']) == 'b259de04a8e03c5119da4003c041d2a2b7f3c2417a11d14ec3722e72310ff2af') {
 
                 session_start();
                 $_SESSION['username'] = $_POST['username'];
@@ -35,7 +36,12 @@
             <h3>Connexion</h3>
             
             <label for="username">Identifiant</label>
-            <input type="text" name="username" placeholder="Identifiant" id="username">
+            <?php
+                if(isset($_POST['password'])) 
+                    echo '<input type="text" name="username" placeholder="Identifiant" id="username" value="' . $_POST['username'] . '">';
+                else 
+                    echo '<input type="text" name="username" placeholder="Identifiant" id="username">';
+            ?>
             
             <label for="password">Mot de passe</label>
             <input type="password" name="password" placeholder="Mot de passe" id="password">
