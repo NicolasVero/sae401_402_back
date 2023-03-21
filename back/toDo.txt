@@ -21,7 +21,10 @@
 // )
 // ° sécurité site => faire avec session ?
 // ° mettre <title> pages créées
+// ° image ne vont pas dans bon dossier quand ajout modif
 
+
+° faire script utilitaire (fonctions copiées collées dans certains scripts)
 ° bouton telechargement -> telecharger directement le dossier
 ° faire le htacces (
 //    => faire pages erreur 404 et 403

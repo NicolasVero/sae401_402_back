@@ -32,15 +32,15 @@
         afficheDossiers($dossiers, $db);
 
         function afficheDossiers($dossiers, $db) {
-            
-            echo "<div id='pages'>";
-            
+                       
             if(count($dossiers) > 1) {
+                echo "<div id='pages'>";
+
                 foreach($dossiers as $dossier)
                     if($dossier != "img_temp" && $dossier != "desktop.ini")
                         drawFolderDiv($dossier, $db);
             } else {
-                echo "<h3 style=''>Aucune page prête à être affichée</h3>";
+                echo "<h3 style='text-align:center'>Aucune page prête à être affichée</h3>";
             }
 
             echo "</div>";

@@ -41,11 +41,7 @@
 
             echo "./back/pages/" . spaceToDash($_POST['titre']);
 
-
-            $requete = $db -> prepare("UPDATE pages SET dossier = ?, contenu = ?, date = ?, url = ? WHERE id = ?");
-            $requete -> execute(array($_POST['titre'], $_POST['texte'], $_POST['date'], './back/pages/' . spaceToDash($_POST['titre']), $_POST['id']));  
-        
-            
+    
             $requete = $db -> prepare("SELECT * FROM pages WHERE id = ?");
             if(isset($_POST['id']))
                 $requete -> execute(array($_POST['id'])); 
@@ -57,9 +53,21 @@
 
             unlink("../pages/" . $_POST['titre'] . "/index.html");
 
+            $files = getImagesFiles(scandir('../pages/img_temp'));
+            $texte = str_replace('<img src="../pages/img_temp/', '<img src="./images/', $_POST['textarea']);
+
+            foreach($files as $file) {
+                if(!moveFile("../pages/img_temp/$file", "../pages/" . $_POST['titre'] . "/images/$file")) {
+                    break;
+                }
+            }
+
+            $requete = $db -> prepare("UPDATE pages SET dossier = ?, contenu = ?, date = ?, url = ? WHERE id = ?");
+            $requete -> execute(array($_POST['titre'], $texte, $_POST['date'], './back/pages/' . spaceToDash($_POST['titre']), $_POST['id']));  
+
             include '../classes/GeneratePage.php';
 
-            $gp = new GeneratePage($_POST['titre'], "index", $_POST['texte']);
+            $gp = new GeneratePage($_POST['titre'], "index", $texte);
             $gp->generateHTMLFile();
 
             header("Location: ../accueil.php");
@@ -74,7 +82,7 @@
             </div>
 
             <div class='MyTextArea' style='margin: 30px 0;'>
-                <textarea name='texte' id='MyTextArea'>$texte</textarea>
+                <textarea name='textarea' id='MyTextArea'>$texte</textarea>
             </div>
 
             <input type='hidden' value=$id name='id'>
@@ -87,6 +95,25 @@
 
         function spaceToDash(string $s):string {
             return strtolower(str_replace(" ", "-", $s));
+        }
+
+        function getImagesFiles($scan) {
+            $files = array();
+    
+            foreach($scan as $fichier)
+                if(preg_match("/.jpg$|.jpeg$|.png$/", $fichier) >= 1) 
+                    $files[] = $fichier;
+    
+            return $files;
+        }
+
+        function moveFile($dossierSource , $dossierDestination){
+
+            if(!file_exists($dossierSource)) return false;  
+            if(!copy($dossierSource, $dossierDestination)) return false; 
+            if(!unlink($dossierSource)) return false;
+            
+            return true;
         }
 
     ?>
