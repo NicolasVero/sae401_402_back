@@ -12,9 +12,15 @@
 
         include 'back/scripts/lire_pages.php';
 
-        get_pages("projet", 4);
-        echo "<br>";
-        get_pages("actu", 3);
+        $projets = get_pages("projet", 4);
+        $actus = get_pages("projet", 4);
+
+        for($i = 0; $i < count($projets); $i++) {
+
+            echo "<h1>".$projets[$i]['titre']."</h1>";
+            echo $projets[$i]['auteur'];
+            echo $projets[$i]['url'];
+        }
 
     ?>
 
