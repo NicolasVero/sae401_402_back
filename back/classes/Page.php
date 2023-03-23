@@ -60,6 +60,7 @@
         }
 
         public function getResume() {
+
             include '../scripts/connect_bdd.php';
 
             $schema = "SELECT contenu, id FROM pages WHERE dossier = ?";
@@ -67,15 +68,17 @@
             $requete -> execute(array($this->dossier));
 
             $dossier_infos = $requete -> fetch();
-            echo $dossier_infos['contenu'];   
 
             $tiny = substr($dossier_infos['contenu'], 0, 150);
-            $tiny .= "</p>";
+            if(substr($tiny, -4) == "</p>") {
+                $tiny = substr($tiny, 0, strlen($tiny) - 4);
+            }
+
+            $tiny .= "...</p>";
 
             $schema = "UPDATE pages SET tiny_contenu = ? WHERE dossier = ?";
             $requete = $db -> prepare($schema);
             $requete -> execute(array($tiny, $this->dossier));
-
         }
 
         public function remplir_bdd() {
