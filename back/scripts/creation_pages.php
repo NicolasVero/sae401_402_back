@@ -29,6 +29,7 @@
             $p = new Page($gp->getDossier(), "index", $texte, $_POST['type'], $gp->getUrl(), "style.css", $_POST['auteur']);
             $gp->generateImagesFolder();
             $p->remplir_bdd();
+            $p->getResume();
             $gp->generateHTMLFile();
 
             foreach($files as $file) {
@@ -37,7 +38,7 @@
                 }
             }
 
-            header('Location: ../accueil.php');
+            // header('Location: ../accueil.php');
         }    
     }
 
