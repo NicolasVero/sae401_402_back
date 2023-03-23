@@ -42,8 +42,14 @@
         public function generateHTMLFile():void {
 
             $open = fopen(self::PATH  . $this->dossier . '/index.html', 'w');
-            // $open = fopen(self::PATH  . $this->dossier . "/" . $this->pageTitle . '.html', 'w');
             fwrite($open, $this->buildHTML());
+            fclose($open);
+        }
+
+        public function generateCSSFile():void {
+
+            $open = fopen(self::PATH  . $this->dossier . '/style.css', 'w');
+            fwrite($open, $this->buildCSS());
             fclose($open);
         }
 
@@ -58,6 +64,48 @@
             return $html;
         }
 
+        private function buildCSS():string {
+
+            return "
+                @import url('https://fonts.cdnfonts.com/css/gotham');
+
+                :root {
+                    --violet: #44358B;
+                    --bleu: #7175B6;
+                    --jaune: #FBB800;
+                    --orange: #F18715;
+                    --rouge: #EB5E25;
+                }
+                
+                *, *:before, *:after {
+                    box-sizing: border-box;
+                }
+                
+                html, body {
+                    margin: 0;
+                    padding: 0;
+                    font-family: 'Gotham', 'sans-serif';
+                    font-size: 1.1rem;
+                    color: var(--violet);
+                    background-color: #ededed;
+                }
+                
+                main {
+                    margin: 0 12vw;
+                }
+                
+                h1, h2, h3, h4, h5, h6 {
+                    text-align: center;
+                }
+                
+                footer {
+                    text-align: right;
+                    margin-right: 12vw;
+                    font-style: italic;
+                }
+            ";
+        }
+
         private function completeHTMLHeader():string {
 
             return "
@@ -65,7 +113,7 @@
                 <html>
                 <head>
                     <link rel='shortcut icon' type='image/png' href='../../img/favicon.png'>
-                    <link rel='stylesheet' href='../styles/page-style.css'>
+                    <link rel='stylesheet' href='style.css'>
                     <meta charset='UTF-8'>
                     <title>" . $this->title . "</title>
                 </head>

@@ -17,6 +17,7 @@
             $p->remplir_bdd();
             $p->getResume();
             $gp->generateHTMLFile();
+            $gp->generateCSSFile();
 
             foreach($files as $file) {
                 if(!moveFile("../pages/img_temp/$file", "../pages/" . $_POST['titre'] . "/images/$file")) {
