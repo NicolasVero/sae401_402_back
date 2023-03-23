@@ -4,7 +4,7 @@ function getImagesFiles($scan) {
     $files = array();
 
     foreach($scan as $fichier)
-        if(preg_match("/.jpg$|.jpeg$|.png$/", $fichier) >= 1) 
+        if(preg_match("/.jpg$|.jpeg$|.png$|.JPG$|.JPEG$|.PNG$/", $fichier) >= 1) 
             $files[] = $fichier;
 
     return $files;
