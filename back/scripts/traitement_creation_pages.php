@@ -22,14 +22,12 @@
             $gp->generateCSSFile();
 
             foreach($files as $file) {
-                
-                // echo "fichier :" $file;
                 if(!moveFile("../pages/img_temp/$file", "../pages/" . $_POST['titre'] . "/images/$file")) {
                     break;
                 }
             }
 
-            // header('Location: ../accueil.php');
+            header('Location: ../accueil.php');
         }    
     }
 

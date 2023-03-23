@@ -15,14 +15,17 @@
     include 'utilitaire.php';
 
     if(isset($_POST['textarea'])) {
-        $images = array(
-            'name' => $_FILES['images']['name'],
-            'size' => $_FILES['images']['size'],
-            'type' => $_FILES['images']['type'],
-            'tmp_name' => $_FILES['images']['tmp_name']
-        );
-
-        move_uploaded_file($images['tmp_name'], "../pages/img_temp/" . spaceToDash($images['name']));
+        $images = $_FILES['images'];
+    
+        for($i=0; $i<count($images['name']); $i++) {
+            $image = array(
+                'name' => $images['name'][$i],
+                'size' => $images['size'][$i],
+                'type' => $images['type'][$i],
+                'tmp_name' => $images['tmp_name'][$i]
+            );
+            move_uploaded_file($image['tmp_name'], "../pages/img_temp/" . spaceToDash($image['name']));
+        }
     }
 
 
@@ -50,7 +53,7 @@
                 </div>
                 <div style="display: flex; flex-direction: column;">
                     <label for="images">Selectionner les images de votre page</label>
-                    <input style="margin: 0 auto;" type="file" name="images" id="images">
+                    <input style="margin: 0 auto;" type="file" name="images[]" id="images" multiple>
                 </div>
             </div>   
             

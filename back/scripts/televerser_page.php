@@ -44,20 +44,34 @@
                 move_uploaded_file($css   ['tmp_name'], "../pages/" . spaceToDash($_POST['titre']) . "/"        . spaceToDash($css   ['name']));
             }
 
-
-            if(isset($_FILES['images'])) { // Si le formulaire est envoyé
-                foreach($_FILES['images'] as $file) { // On traite le tableau retourné par file
-                    $images = array(
-                        'name' => $file['images']['name'],
-                        'size' => $file['images']['size'],
-                        'type' => $file['images']['type'],
-                        'tmp_name' => $file['images']['tmp_name']
-                    );
-    
-                    move_uploaded_file($images['tmp_name'], "../pages/" . spaceToDash($_POST['titre']) . "/images/" . spaceToDash($images['name']));
-    
-                }
+            $images = $_FILES['images'];
+        
+            for($i=0; $i<count($images['name']); $i++) {
+                $image = array(
+                    'name' => $images['name'][$i],
+                    'size' => $images['size'][$i],
+                    'type' => $images['type'][$i],
+                    'tmp_name' => $images['tmp_name'][$i]
+                );
+                move_uploaded_file($image['tmp_name'], "../pages/" . spaceToDash($_POST['titre']) . "/images/" . spaceToDash($image['name']));
             }
+            
+
+
+
+            // if(isset($_FILES['images'])) { // Si le formulaire est envoyé
+            //     foreach($_FILES['images'] as $file) { // On traite le tableau retourné par file
+            //         $images = array(
+            //             'name' => $file['images']['name'],
+            //             'size' => $file['images']['size'],
+            //             'type' => $file['images']['type'],
+            //             'tmp_name' => $file['images']['tmp_name']
+            //         );
+    
+            //         move_uploaded_file($images['tmp_name'], "../pages/" . spaceToDash($_POST['titre']) . "/images/" . spaceToDash($images['name']));
+    
+            //     }
+            // }
 
 
 
@@ -118,7 +132,7 @@
             </div>
             <div>
                 <label for="images">Selectionner les images de votre page</label>
-                <input style="margin: 0 auto;" type="file" name="images[]" id="images">
+                <input style="margin: 0 auto;" type="file" name="images[]" id="images" multiple>
             </div>
         </div>
         <input style="margin: 0 auto;" class="bouton" type="submit" value="Téléverser la page">
