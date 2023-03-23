@@ -14,15 +14,16 @@
     include 'verif_session.php';
     include 'utilitaire.php';
 
-    if(isset($_POST['titre'])) {
+    if(isset($_POST['textarea'])) {
         $images = array(
             'name' => $_FILES['images']['name'],
             'size' => $_FILES['images']['size'],
             'type' => $_FILES['images']['type'],
             'tmp_name' => $_FILES['images']['tmp_name']
         );
-    }
 
+        move_uploaded_file($images['tmp_name'], "../pages/img_temp/" . spaceToDash($images['name']));
+    }
 
 
     include 'traitement_creation_pages.php';
@@ -35,7 +36,7 @@
 
         <script src="init_tinymce.js"></script>
 
-        <form id="creer-form" action='creation_pages.php' method='POST' enctype="multipart/form-data">
+        <form id="creer-form" action='remplir_pages.php' method='POST' enctype="multipart/form-data">
             
             <div id="creer-form-data">
                 <input class="form-input-text" type="text" name="titre" id="titre" placeholder="Titre de la page" required/>

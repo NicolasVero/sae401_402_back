@@ -25,8 +25,12 @@
 // ° faire script utilitaire (fonctions copiées collées dans certains scripts) --> voir fonctions mises dedant
 // ° fichier html pas correctement nommé televersement
 // ° faire extrait articles dans bdd
+// ° images ne se dl pas televersement 
+// ° separer création pages en deux ? 
+//   => une partie comme actuellement
+//   => une partie ou l'on écrit simplement, et les images sont par exemple disposées à la fin  
 
-° images ne se dl pas televersement 
+
 ° bouton telechargement -> telecharger directement le dossier
 ° faire le htacces (
 //    => faire pages erreur 404 et 403
@@ -37,9 +41,7 @@
     => voir si possible acceder a des fichiers MAIS interdire acces quand url tappée directement
 )
 ° permettre de changer la feuille de style 
-//TODO ° separer création pages en deux ? 
-//TODO   => une partie comme actuellement
-//TODO   => une partie ou l'on écrit simplement, et les images sont par exemple disposées à la fin  
+
 
 //? ° remplacer detection des fichiers par lecture bdd accueil
 //? ° est ce derangeant pas image quand modif ?
