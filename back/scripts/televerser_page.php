@@ -44,16 +44,35 @@
                 move_uploaded_file($css   ['tmp_name'], "../pages/" . spaceToDash($_POST['titre']) . "/"        . spaceToDash($css   ['name']));
             }
 
-            if(isset($_FILES['images']['name'])) {
-                $images = array(
-                    'name' => $_FILES['images']['name'],
-                    'size' => $_FILES['images']['size'],
-                    'type' => $_FILES['images']['type'],
-                    'tmp_name' => $_FILES['images']['tmp_name']
-                );
 
-                move_uploaded_file($images['tmp_name'], "../pages/" . spaceToDash($_POST['titre']) . "/images/" . spaceToDash($images['name']));
+            if(isset($_FILES['images'])) { // Si le formulaire est envoyé
+                foreach($_FILES['images'] as $file) { // On traite le tableau retourné par file
+                    $images = array(
+                        'name' => $file['images']['name'],
+                        'size' => $file['images']['size'],
+                        'type' => $file['images']['type'],
+                        'tmp_name' => $file['images']['tmp_name']
+                    );
+    
+                    move_uploaded_file($images['tmp_name'], "../pages/" . spaceToDash($_POST['titre']) . "/images/" . spaceToDash($images['name']));
+    
+                }
             }
+
+
+
+
+
+            // if(isset($_FILES['images']['name'])) {
+            //     $images = array(
+            //         'name' => $_FILES['images']['name'],
+            //         'size' => $_FILES['images']['size'],
+            //         'type' => $_FILES['images']['type'],
+            //         'tmp_name' => $_FILES['images']['tmp_name']
+            //     );
+
+            //     move_uploaded_file($images['tmp_name'], "../pages/" . spaceToDash($_POST['titre']) . "/images/" . spaceToDash($images['name']));
+            // }
 
             include '../classes/Page.php';
             include '../classes/GeneratePage.php';
@@ -99,7 +118,7 @@
             </div>
             <div>
                 <label for="images">Selectionner les images de votre page</label>
-                <input style="margin: 0 auto;" type="file" name="images" id="images">
+                <input style="margin: 0 auto;" type="file" name="images[]" id="images">
             </div>
         </div>
         <input style="margin: 0 auto;" class="bouton" type="submit" value="Téléverser la page">
