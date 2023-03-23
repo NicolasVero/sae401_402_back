@@ -12,6 +12,7 @@
     
     <section id="actions-pages"> 
         <a href="scripts/creation_pages.php" class="bouton"><p>Créer une nouvelle page</p></a>
+        <a href="scripts/remplir_pages.php" class="bouton"><p>Remplir une nouvelle page</p></a>
         <a href="scripts/televerser_page.php" class="bouton"><p>Téléverser une nouvelle page</p></a>
     </section>
 

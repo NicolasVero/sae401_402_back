@@ -24,8 +24,8 @@
 // ° image ne vont pas dans bon dossier quand ajout modif
 // ° faire script utilitaire (fonctions copiées collées dans certains scripts) --> voir fonctions mises dedant
 // ° fichier html pas correctement nommé televersement
+// ° faire extrait articles dans bdd
 
-° faire extrait articles dans bdd
 ° images ne se dl pas televersement 
 ° bouton telechargement -> telecharger directement le dossier
 ° faire le htacces (

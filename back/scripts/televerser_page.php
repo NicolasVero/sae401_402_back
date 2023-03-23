@@ -77,12 +77,12 @@
                 <input type="file" name="html" id="html" accept=".html">
             </div>
             <div>
-                <label for="html">Choisir un fichier css</label>
+                <label for="css">Choisir un fichier css</label>
                 <input type="file" name="css" id="css" accept=".css">
             </div>
             <div>
-                <label for="html">Selectionner les images de votre page</label>
-                <input style="margin: 0 auto;" type="file" name="images" id="css">
+                <label for="images">Selectionner les images de votre page</label>
+                <input style="margin: 0 auto;" type="file" name="images" id="images">
             </div>
         </div>
         <input style="margin: 0 auto;" class="bouton" type="submit" value="Téléverser la page">
