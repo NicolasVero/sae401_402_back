@@ -35,12 +35,20 @@
                 'tmp_name' => $_FILES['css']['tmp_name']
             );
 
+            $images = array(
+                'name' => $_FILES['images']['name'],
+                'size' => $_FILES['images']['size'],
+                'type' => $_FILES['images']['type'],
+                'tmp_name' => $_FILES['images']['tmp_name']
+            );
+
             foreach($html as $key => $element) {
                 echo "$key : $element <br>";
             }
 
-            if(move_uploaded_file($html['tmp_name'], "../pages/" . spaceToDash($_POST['titre']) . "/" . spaceToDash($html['name'])) && 
-               move_uploaded_file($css ['tmp_name'], "../pages/" . spaceToDash($_POST['titre']) . "/" . spaceToDash($css['name']))) {
+            if(move_uploaded_file($html  ['tmp_name'], "../pages/" . spaceToDash($_POST['titre']) . "/"        . spaceToDash($html  ['name'])) && 
+               move_uploaded_file($css   ['tmp_name'], "../pages/" . spaceToDash($_POST['titre']) . "/"        . spaceToDash($css   ['name'])) &&
+               move_uploaded_file($images['tmp_name'], "../pages/" . spaceToDash($_POST['titre']) . "/images/" . spaceToDash($images['name']))) {
 
                 include '../classes/Page.php';
 
