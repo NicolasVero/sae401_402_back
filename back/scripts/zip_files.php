@@ -32,6 +32,9 @@
 	
 	$zip->close();
 
+
+	sleep(3);
+
 	// Envoi des entêtes HTTP pour forcer le téléchargement
 	header('Content-Description: File Transfer');
 	header('Content-Type: application/zip');
@@ -47,6 +50,6 @@
 	readfile($zip_name);
 
 	// Supprimer le fichier zip après l'avoir envoyé au navigateur
-	// unlink($zip_name);
+	unlink($zip_name);
 
 ?>

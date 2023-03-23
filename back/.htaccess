@@ -2,3 +2,10 @@ Options All -Indexes
 
 ErrorDocument 403 ../html/erreur403.html
 ErrorDocument 404 ../html/erreur404.html
+
+#donner lien pages erreurs en absolu
+
+#<FilesMatch "^(?!index\.php$).+\.php$">
+#    Order deny,allow
+#    Deny from all
+#</FilesMatch>

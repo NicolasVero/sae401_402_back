@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <!-- <base href="http://localhost/sae401/back/pages/"<?php //echo $dossier . "/" ?>> -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/style.css">
@@ -13,7 +14,6 @@
     <script src="init_tinymce.js"></script>
 
     <main>
-
     <?php
 
         include 'verif_session.php';     
@@ -25,7 +25,7 @@
             $requete -> execute(array($_POST['id'])); 
         else 
             $requete -> execute(array($_GET['page']));  
-    
+
         $pages_infos = $requete -> fetch();
 
         $dossier = $pages_infos['dossier'];
@@ -33,8 +33,7 @@
         $texte   = $pages_infos['contenu'];
         $date    = $pages_infos['date'];
         $id      = $pages_infos['id'];
-
-
+        
         if(isset($_POST['id'])) {
             
             if($_POST['titre'] != $dossier) {

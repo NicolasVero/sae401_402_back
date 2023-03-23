@@ -21,44 +21,53 @@
             mkdir("../pages/" . spaceToDash($_POST['titre']));
             mkdir("../pages/" . spaceToDash($_POST['titre']) . "/images/");
 
-            $html = array(
-                'name' => "index.html",
-                'size' => $_FILES['html']['size'],
-                'type' => $_FILES['html']['type'],
-                'tmp_name' => $_FILES['html']['tmp_name']
-            );
 
-            $css = array(
-                'name' => $_FILES['css']['name'],
-                'size' => $_FILES['css']['size'],
-                'type' => $_FILES['css']['type'],
-                'tmp_name' => $_FILES['css']['tmp_name']
-            );
+            if(isset($_FILES['html']['name'])) {
+                $html = array(
+                    'name' => "index.html",
+                    'size' => $_FILES['html']['size'],
+                    'type' => $_FILES['html']['type'],
+                    'tmp_name' => $_FILES['html']['tmp_name']
+                );
 
-            $images = array(
-                'name' => $_FILES['images']['name'],
-                'size' => $_FILES['images']['size'],
-                'type' => $_FILES['images']['type'],
-                'tmp_name' => $_FILES['images']['tmp_name']
-            );
-
-            foreach($html as $key => $element) {
-                echo "$key : $element <br>";
+                move_uploaded_file($html  ['tmp_name'], "../pages/" . spaceToDash($_POST['titre']) . "/"        . spaceToDash($html  ['name']));
             }
 
-            if(move_uploaded_file($html  ['tmp_name'], "../pages/" . spaceToDash($_POST['titre']) . "/"        . spaceToDash($html  ['name'])) && 
-               move_uploaded_file($css   ['tmp_name'], "../pages/" . spaceToDash($_POST['titre']) . "/"        . spaceToDash($css   ['name'])) &&
-               move_uploaded_file($images['tmp_name'], "../pages/" . spaceToDash($_POST['titre']) . "/images/" . spaceToDash($images['name']))) {
+            if(isset($_FILES['css']['name'])) {
+                $css = array(
+                    'name' => $_FILES['css']['name'],
+                    'size' => $_FILES['css']['size'],
+                    'type' => $_FILES['css']['type'],
+                    'tmp_name' => $_FILES['css']['tmp_name']
+                );
 
-                include '../classes/Page.php';
-
-                $p = new Page(spaceToDash($_POST['titre']), "index", "null", $_POST['type'], spaceToDash($html['name']), spaceToDash($css['name']), $_POST['auteur']);
-                $p->remplir_bdd();
-
-                header("Location: ../accueil.php");
-                
+                move_uploaded_file($css   ['tmp_name'], "../pages/" . spaceToDash($_POST['titre']) . "/"        . spaceToDash($css   ['name']));
             }
 
+            if(isset($_FILES['images']['name'])) {
+                $images = array(
+                    'name' => $_FILES['images']['name'],
+                    'size' => $_FILES['images']['size'],
+                    'type' => $_FILES['images']['type'],
+                    'tmp_name' => $_FILES['images']['tmp_name']
+                );
+
+                move_uploaded_file($images['tmp_name'], "../pages/" . spaceToDash($_POST['titre']) . "/images/" . spaceToDash($images['name']));
+            }
+
+            include '../classes/Page.php';
+            include '../classes/GeneratePage.php';
+
+            if(isset($_POST['style'])) {
+                $gp = new GeneratePage($_POST['titre'], $_POST['titre'], "null");
+                $gp->generateCSSFile();
+            }
+
+            $p = new Page(spaceToDash($_POST['titre']), "index", "null", $_POST['type'], spaceToDash($html['name']), spaceToDash($css['name']), $_POST['auteur']);
+            $p->remplir_bdd();
+
+            header("Location: ../accueil.php");
+            
         }
     
     ?>
@@ -69,7 +78,7 @@
             <input class="form-input-text" type="text" name="auteur" id="auteur" placeholder="Auteur de la page" required>
             <div>
                 <label for="style">Utiliser la feuille de style par défaut</label>
-                <input type="checkbox" name="style" id="style" checked>
+                <input type="checkbox" name="style" id="style">
             </div>
             <div>
                 <input type="radio" id="projet" name="type" value="projet" checked>
