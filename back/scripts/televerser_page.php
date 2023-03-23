@@ -21,7 +21,6 @@
             mkdir("../pages/" . spaceToDash($_POST['titre']));
             mkdir("../pages/" . spaceToDash($_POST['titre']) . "/images/");
 
-
             if(isset($_FILES['html']['name'])) {
                 $html = array(
                     'name' => "index.html",
@@ -56,38 +55,6 @@
                 move_uploaded_file($image['tmp_name'], "../pages/" . spaceToDash($_POST['titre']) . "/images/" . spaceToDash($image['name']));
             }
             
-
-
-
-            // if(isset($_FILES['images'])) { // Si le formulaire est envoyé
-            //     foreach($_FILES['images'] as $file) { // On traite le tableau retourné par file
-            //         $images = array(
-            //             'name' => $file['images']['name'],
-            //             'size' => $file['images']['size'],
-            //             'type' => $file['images']['type'],
-            //             'tmp_name' => $file['images']['tmp_name']
-            //         );
-    
-            //         move_uploaded_file($images['tmp_name'], "../pages/" . spaceToDash($_POST['titre']) . "/images/" . spaceToDash($images['name']));
-    
-            //     }
-            // }
-
-
-
-
-
-            // if(isset($_FILES['images']['name'])) {
-            //     $images = array(
-            //         'name' => $_FILES['images']['name'],
-            //         'size' => $_FILES['images']['size'],
-            //         'type' => $_FILES['images']['type'],
-            //         'tmp_name' => $_FILES['images']['tmp_name']
-            //     );
-
-            //     move_uploaded_file($images['tmp_name'], "../pages/" . spaceToDash($_POST['titre']) . "/images/" . spaceToDash($images['name']));
-            // }
-
             include '../classes/Page.php';
             include '../classes/GeneratePage.php';
 

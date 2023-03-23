@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Créer une page</title>
+    <title>Remplir une page</title>
     <link rel="stylesheet" href="../styles/style.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,7 +33,7 @@
 
 ?>
 
-    <script src="../tinymce/tinymce.min.js" ></script>
+    <script src="../tinymce/tinymce.min.js"></script>
 
     <main>
 

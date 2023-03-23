@@ -133,17 +133,8 @@
 
             $schema = $db -> prepare('SELECT date, auteur FROM pages WHERE dossier LIKE ?');
             $schema -> execute(array($this->dossier));
-
-
             $infos = $schema -> fetch(); 
-            echo $schema -> rowCount();
-
-            echo "<b>page : " . $this->dossier . "</b><br>";
-            
-            echo "infos fetch : ";
-            print_r($infos);
-            
-
+          
             return "
                 </main>
 

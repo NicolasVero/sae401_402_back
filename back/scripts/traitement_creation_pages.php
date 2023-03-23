@@ -8,8 +8,6 @@
         $files = getImagesFiles(scandir('../pages/img_temp'));
         $texte = str_replace('<img src="../pages/img_temp/', '<img src="./images/', $_POST['textarea']);
         
-        print_r($files);
-
         $gp = new GeneratePage($_POST['titre'], $_POST['titre'], $texte);
         
         if($gp->generateFolder()) {
