@@ -28,16 +28,17 @@
     
         $pages_infos = $requete -> fetch();
 
-        $titre = $pages_infos['dossier'];
-        $texte = $pages_infos['contenu'];
-        $date  = $pages_infos['date'];
-        $id    = $pages_infos['id'];
+        $dossier = $pages_infos['dossier'];
+        $titre   = $pages_infos['titre'];
+        $texte   = $pages_infos['contenu'];
+        $date    = $pages_infos['date'];
+        $id      = $pages_infos['id'];
 
 
         if(isset($_POST['id'])) {
             
-            if($_POST['titre'] != $titre) {
-                rename("../pages/" . $titre, "../pages/" . spaceToDash($_POST['titre']));
+            if($_POST['titre'] != $dossier) {
+                rename("../pages/" . $dossier, "../pages/" . spaceToDash($_POST['titre']));
             }
 
             echo "./back/pages/" . spaceToDash($_POST['titre']);
@@ -63,8 +64,8 @@
                 }
             }
 
-            $requete = $db -> prepare("UPDATE pages SET dossier = ?, contenu = ?, date = ?, url = ? WHERE id = ?");
-            $requete -> execute(array(spaceToDash($_POST['titre']), $texte, $_POST['date'], './back/pages/' . spaceToDash($_POST['titre']), $_POST['id']));  
+            $requete = $db -> prepare("UPDATE pages SET dossier = ?, titre = ?, contenu = ?, date = ?, url = ? WHERE id = ?");
+            $requete -> execute(array(spaceToDash($_POST['titre']), $_POST['titre'], $texte, $_POST['date'], './back/pages/' . spaceToDash($_POST['titre']), $_POST['id']));  
 
             include '../classes/GeneratePage.php';
 

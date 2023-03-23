@@ -8,11 +8,11 @@
         $files = getImagesFiles(scandir('../pages/img_temp'));
         $texte = str_replace('<img src="../pages/img_temp/', '<img src="./images/', $_POST['textarea']);
         
-        $gp = new GeneratePage($_POST['titre'], "index", $texte);
+        $gp = new GeneratePage($_POST['titre'], $_POST['titre'], $texte);
         
         if($gp->generateFolder()) {
         
-            $p = new Page($gp->getDossier(), "index", $texte, $_POST['type'], $gp->getUrl(), "style.css", $_POST['auteur']);
+            $p = new Page($gp->getDossier(), $_POST['titre'], $texte, $_POST['type'], $gp->getUrl(), "style.css", $_POST['auteur']);
             $gp->generateImagesFolder();
             $p->remplir_bdd();
             $p->getResume();
