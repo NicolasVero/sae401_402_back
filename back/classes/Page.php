@@ -69,7 +69,8 @@
 
             $dossier_infos = $requete -> fetch();
 
-            $tiny = substr($dossier_infos['contenu'], 0, 150);
+            $tiny = substr($dossier_infos['contenu'], strpos($dossier_infos['contenu'], "<p>"), 10);
+
             if(substr($tiny, -4) == "</p>") {
                 $tiny = substr($tiny, 0, strlen($tiny) - 4);
             }
