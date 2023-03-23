@@ -35,3 +35,5 @@
 //    => faire pages erreur 404 et 403
     //=> voir si possible acceder a des fichiers MAIS interdire acces quand url tappée directement
 //)
+
+° mettre chemin absolu dans htacces

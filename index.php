@@ -12,18 +12,16 @@
 
         include 'back/scripts/lire_pages.php';
 
-        $projets = get_pages("projet", 2);
-        $actus = get_pages("projet", 1);
-        $pages = [$projets, $actus];
+        $projets = get_pages("projet", 3);
+        $actus = get_pages("actu", 3);
 
-        for ($x = 0; $x < count($pages); $x++) {
-            for($i = 0; $i < count($pages[$x]); $i++) {
-                echo "<h1>" . $pages[$x][$i]['auteur'] . "</h1>";
-                echo "<p>" . $pages[$x][$i]['contenu'] . "<p>";
-            }
+        for($i = 0; $i < count($actus); $i++) {
+            echo "<div class='news'><a href='" . $actus[$i]['url'] . "' target='_blank' class='news-links'><div><h1>" . $actus[$i]['dossier'] . "</h1>" . $actus[$i]['tiny_contenu'] . "<span>Par " . $actus[$i]['auteur'] . " le " . $actus[$i]['date'] . "</span></div></a></div>";
         }
 
-        
+        for($i = 0; $i < count($projets); $i++) {
+            echo "<div class='projects'><a href='" . $projets[$i]['url'] . "' target='_blank' class='projects-links'><div><h1>" . $projets[$i]['dossier'] . "</h1><p>" . $projets[$i]['tiny_contenu'] . "</p><span>Par " . $projets[$i]['auteur'] . " le " . $projets[$i]['date'] . "</span></div></a></div>";
+        }
 
     ?>
 
