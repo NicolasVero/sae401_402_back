@@ -14,7 +14,7 @@
 // ° ajouté selection actu ou projet quand televersement
 // ° mettre deuxieme argument index pour récuperer nbr article que l'on veut (ne marche pas quand param utilisé)
 // ° probleme images dossier (mail carpentier -> solution : faire televerser images apres depuis accueil.php ?)
-// OU mettre images dans un dossier centralisé, et bouger toutes les images vers dossier final quand page créée
+//   OU mettre images dans un dossier centralisé, et bouger toutes les images vers dossier final quand page créée
 // ° voir pour modifier des pages qui ont été téléversées (
 //     => soit empeché  --> rajouter attribut "estModifiable" dans bdd
 //     => soit autorisé --> pouvoir mettre le texte de la page HTML dans la bdd
