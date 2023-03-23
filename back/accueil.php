@@ -65,7 +65,6 @@
                 echo "<div class='page non-visible'>";
             }
 
-
             echo "<div class='page-infos'><h3><a href='pages/$path' target='_blank'>$dossier</a></h3>";
             echo "<p><i>" . $dossier_infos['type'] . "</i> - Page ajoutée le " . $dossier_infos['date'] . "</p></div>";
             echo "<div class='page-option'>";
