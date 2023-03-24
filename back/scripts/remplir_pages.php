@@ -28,7 +28,6 @@
         }
     }
 
-
     include 'traitement_creation_pages.php';
 
 ?>

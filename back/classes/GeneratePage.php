@@ -39,10 +39,10 @@
             mkdir(self::PATH . $this->dossier . "/images/");
         }
 
-        public function generateHTMLFile():void {
+        public function generateHTMLFile($images = null):void {
 
             $open = fopen(self::PATH  . $this->dossier . '/index.html', 'w');
-            fwrite($open, $this->buildHTML());
+            fwrite($open, $this->buildHTML($images));
             fclose($open);
         }
 
@@ -53,13 +53,13 @@
             fclose($open);
         }
 
-        private function buildHTML():string {
+        private function buildHTML($images):string {
 
             $html  = $this->completeHTMLHeader();
             $html .= "<h1>" . $this->title . "</h1>";
             $html .= $this->completeHTMLMain();
             $html .= $this->content;
-            $html .= $this->completeHTMLFooter();
+            $html .= $this->completeHTMLFooter($images);
 
             return $html;
         }
@@ -127,15 +127,31 @@
             ";
         }
 
-        private function completeHTMLFooter():string {
+        private function completeHTMLFooter($images):string {
 
             include 'connect_bdd.php';
 
             $schema = $db -> prepare('SELECT date, auteur FROM pages WHERE dossier LIKE ?');
             $schema -> execute(array($this->dossier));
             $infos = $schema -> fetch(); 
-          
+            print_r($images);
+
+            $string = "";
+            if($images != null) {
+                
+                foreach($images as $image) {   
+                    $string .= "
+                        <img style='
+                            max-width: 500px;  
+                            max-height: 200px;
+                        '
+                        src='images/$image' alt=''>
+                    ";
+                }
+            }
+
             return "
+                $string
                 </main>
 
                 <footer>

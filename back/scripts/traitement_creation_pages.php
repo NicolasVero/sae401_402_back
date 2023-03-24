@@ -16,7 +16,10 @@
             $gp->generateImagesFolder();
             $p->remplir_bdd();
             $p->getResume();
-            $gp->generateHTMLFile();
+
+            if(isset($images['name']))
+                $gp->generateHTMLFile($images['name']);
+
             $gp->generateCSSFile();
 
             foreach($files as $file) {
