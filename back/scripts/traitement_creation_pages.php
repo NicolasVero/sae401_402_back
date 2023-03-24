@@ -19,7 +19,9 @@
 
             if(isset($images['name']))
                 $gp->generateHTMLFile($images['name']);
-
+            else  
+                $gp->generateHTMLFile();
+                
             $gp->generateCSSFile();
 
             foreach($files as $file) {
