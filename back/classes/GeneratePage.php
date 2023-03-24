@@ -142,7 +142,7 @@
             if($images != null) {
                 $string .= "<section class='gallery' style='display: flex; flex-wrap: wrap; gap: 15px;'>";
                 foreach($images as $image) 
-                   $string .= "<img style='max-width: 500px; max-height: 200px;' class='gallery-images' src='images/$image' alt=''>";
+                   $string .= "<img style='max-width: 500px; max-height: 450px; object-fit: cover;' class='gallery-images' src='images/$image' alt=''>";
             
                 $string .= "</section>";
                 $string .= "<div class='popup-image'><span>&times;</span><img src='' alt=''></div>";
