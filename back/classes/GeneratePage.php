@@ -112,6 +112,7 @@
                 <!DOCTYPE html>
                 <html>
                 <head>
+                    <link href='../../styles/popup-style.css' rel='stylesheet'>
                     <link rel='shortcut icon' type='image/png' href='../../img/favicon.png'>
                     <link rel='stylesheet' href='style.css'>
                     <meta charset='UTF-8'>
@@ -137,23 +138,20 @@
             print_r($images);
 
             $string = "";
+
             if($images != null) {
-                
-                foreach($images as $image) {   
-                    $string .= "
-                        <img style='
-                            max-width: 500px;  
-                            max-height: 200px;
-                        '
-                        src='images/$image' alt=''>
-                    ";
-                }
+                $string .= "<section class='gallery' style='display: flex; flex-wrap: wrap; gap: 15px;'>";
+                foreach($images as $image) 
+                   $string .= "<img style='max-width: 500px; max-height: 200px;' class='gallery-images' src='images/$image' alt=''>";
+            
+                $string .= "</section>";
+                $string .= "<div class='popup-image'><span>&times;</span><img src='' alt=''></div>";
             }
 
             return "
                 $string
                 </main>
-
+                <script src='../../scripts/images.js'></script>
                 <footer>
                     <p>Fait le " . $infos['date'] . " par " . $infos['auteur'] . "</p>
                 </footer>
