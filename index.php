@@ -16,7 +16,15 @@
         $actus = get_pages("actu", 3);
 
         for($i = 0; $i < count($actus); $i++) {
-            echo "<div class='news'><a href='" . $actus[$i]['url'] . "' target='_blank' class='news-links'><div><h1>" . $actus[$i]['dossier'] . "</h1>" . $actus[$i]['tiny_contenu'] . "<span>Par " . $actus[$i]['auteur'] . " le " . $actus[$i]['date'] . "</span></div></a></div>";
+            echo "
+                <div class='news'>
+                    <a href='" . $actus[$i]['url'] . "'>
+                    <div>
+                        <h1>" . $actus[$i]['dossier'] . "</h1>" . 
+                        "<span>Par " . $actus[$i]['auteur'] . " le " . $actus[$i]['date'] . "</span>
+                    </div>
+                    </a>
+                </div>";
         }
 
         for($i = 0; $i < count($projets); $i++) {
