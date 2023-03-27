@@ -132,11 +132,6 @@
 
             include 'connect_bdd.php';
 
-            $schema = $db -> prepare('SELECT date, auteur FROM pages WHERE dossier LIKE ?');
-            $schema -> execute(array($this->dossier));
-            $infos = $schema -> fetch(); 
-            print_r($images);
-
             $string = "";
 
             if($images != null) {
@@ -146,10 +141,18 @@
             
                 $string .= "</section>";
                 $string .= "<div class='popup-image'><span>&times;</span><img src='' alt=''></div>";
+
+                $schema = $db -> prepare('UPDATE pages SET galerie = ? WHERE dossier LIKE ?');
+                $schema -> execute(array($string, $this->dossier));
             }
 
-            return "
-                $string
+            $schema = $db -> prepare('SELECT date, auteur, galerie FROM pages WHERE dossier LIKE ?');
+            $schema -> execute(array($this->dossier));
+            $infos = $schema -> fetch(); 
+            print_r($images);
+
+            return 
+                $infos['galerie'] . "
                 </main>
                 <script src='../../scripts/images.js'></script>
                 <footer>
