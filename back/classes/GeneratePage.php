@@ -148,12 +148,13 @@
 
             $schema = $db -> prepare('SELECT date, auteur, galerie FROM pages WHERE dossier LIKE ?');
             $schema -> execute(array($this->dossier));
-            $infos = $schema -> fetch(); 
-            print_r($images);
+            $infos = $schema -> fetch();           
+
+            echo $infos['galerie'];
 
             return 
-                $infos['galerie'] . "
-                </main>
+                $infos['galerie'] .
+                "</main>
                 <script src='../../scripts/images.js'></script>
                 <footer>
                     <p>Fait le " . $infos['date'] . " par " . $infos['auteur'] . "</p>
