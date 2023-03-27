@@ -151,8 +151,6 @@
             $schema -> execute(array($this->dossier));
             $infos = $schema -> fetch();           
 
-            echo $infos['galerie'];
-
             return 
                 $infos['galerie'] .
                 "</main>

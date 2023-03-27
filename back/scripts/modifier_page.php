@@ -38,9 +38,6 @@
             if($_POST['titre'] != $dossier) {
                 rename("../pages/" . $dossier, "../pages/" . spaceToDash($_POST['titre']));
             }
-
-            echo "./back/pages/" . spaceToDash($_POST['titre']);
-
     
             $requete = $db -> prepare("SELECT * FROM pages WHERE id = ?");
             if(isset($_POST['id']))
