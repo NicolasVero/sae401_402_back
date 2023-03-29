@@ -12,7 +12,7 @@
     <?php
 
         include 'verif_session.php';
-        include 'utilitaire.php';
+        include_once 'utilitaire.php';
         include 'traitement_creation_pages.php';
 
     ?>

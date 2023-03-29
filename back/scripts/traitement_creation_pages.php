@@ -4,6 +4,7 @@
 
         include '../classes/GeneratePage.php';
         include '../classes/Page.php';
+        include_once 'utilitaire.php';
         
         $files = getImagesFiles(scandir('../pages/img_temp'));
         $texte = str_replace('<img src="../pages/img_temp/', '<img src="./images/', $_POST['textarea']);
@@ -14,8 +15,9 @@
         
             $p = new Page($gp->getDossier(), $_POST['titre'], $texte, $_POST['type'], $gp->getUrl(), "style.css", $_POST['auteur']);
             $gp->generateImagesFolder();
-            $p->remplir_bdd();
-            $p->getResume();
+            $p->remplir_bdd();           
+            getTinyContenu($gp->getDossier());
+
 
             if(isset($images['name']))
                 $gp->generateHTMLFile($images['name']);

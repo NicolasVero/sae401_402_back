@@ -38,4 +38,28 @@ function remove_dir($dir) {
     }
 }
 
+function getTinyContenu($titre) {
+
+    include 'connect_bdd.php';
+
+    $schema = "SELECT contenu, id FROM pages WHERE dossier = ?";
+    $requete = $db -> prepare($schema);
+    $requete -> execute(array($titre));
+    
+    $dossier_infos = $requete -> fetch();
+    
+    $tiny = substr($dossier_infos['contenu'], strpos($dossier_infos['contenu'], "<p>"), 100);
+    
+    if(substr($tiny, -4) == "</p>") {
+        $tiny = substr($tiny, 0, strlen($tiny) - 4);
+    }
+    
+    $tiny .= "...</p>";
+    
+    $schema = "UPDATE pages SET tiny_contenu = ? WHERE dossier = ?";
+    $requete = $db -> prepare($schema);
+    $requete -> execute(array($tiny, $titre));
+    
+}
+
 ?>
