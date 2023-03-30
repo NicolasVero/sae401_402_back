@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,7 +29,7 @@
                     'tmp_name' => $_FILES['html']['tmp_name']
                 );
 
-                move_uploaded_file($html  ['tmp_name'], "../pages/" . spaceToDash($_POST['titre']) . "/"        . spaceToDash($html  ['name']));
+                move_uploaded_file($html['tmp_name'], "../pages/" . spaceToDash($_POST['titre']) . "/" . spaceToDash($html['name']));
             }
 
             if(isset($_FILES['css']['name'])) {
@@ -40,7 +40,7 @@
                     'tmp_name' => $_FILES['css']['tmp_name']
                 );
 
-                move_uploaded_file($css   ['tmp_name'], "../pages/" . spaceToDash($_POST['titre']) . "/"        . spaceToDash($css   ['name']));
+                move_uploaded_file($css['tmp_name'], "../pages/" . spaceToDash($_POST['titre']) . "/" . spaceToDash($css['name']));
             }
 
             $images = $_FILES['images'];

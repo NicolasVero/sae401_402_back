@@ -1,0 +1,306 @@
+@import "../scss/variables";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    width: 100%;
+    height: 100vh;
+    background-image: url("../assets/images/parcoursDev.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    
+    div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        width: 80%;
+        margin-left: 1em;
+        
+        h1,
+        span,
+        p {
+            color: $blanc;
+            margin: 1em 0;
+            animation: opacity 1s ease;
+            -webkit-transition: opacity 1s ease;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: "Gotham-Bold", sans-serif;
+            font-size: 2.5rem;
+        }
+        
+        span {
+            font-family: "Gotham-Light", sans-serif;
+            font-size: 1.5rem;
+        }
+
+        p {
+            font-family: "Gotham-Light", sans-serif;
+            font-size: 1.2rem;
+        }    
+    }
+}
+
+section {
+    margin-bottom: 100px;
+
+    .jobsContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        margin-top: 200px;
+        transform: translateY(25px);
+        -webkit-transform: translateY(25px);
+        opacity: 0;
+        transition: all 1s ease;
+        background-color: $bleu;
+        padding: 70px 0;
+
+        .career {
+
+            span {
+                color: $blanc;
+                font-family: "Gotham-Light";
+                font-size: 1.5rem;
+            }
+        }
+
+        .revealContainer {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+
+            .jobs-informations {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+
+                img {                
+                    width: 150px;
+                }
+
+                .jobs {
+                    color: $blanc;
+                    font-family: "Gotham-Light";
+                    text-align: center;
+                    font-size: 1.5rem;
+                }
+            }
+        }
+
+        &.active {
+            transform: translateY(0px);
+            -webkit-transform: translateY(0px);
+            opacity: 1;
+        }
+
+        & + h2 {
+            margin: 5em 0;
+            text-align: center;
+            color: $bleu;
+            font-family: "Gotham-Bold", sans-serif;
+            font-weight: 700;
+            padding: 0 10px;
+            font-size: 2rem;
+            transform: translateY(25px);
+            -webkit-transform: translateY(25px);
+            opacity: 0;
+            transition: all 1s ease;
+
+            &.active {
+                transform: translateY(0px);
+                -webkit-transform: translateY(0px);
+                opacity: 1;
+            }
+        }
+    }
+
+    .PPN {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        padding: 0 10px;
+        
+        .column-1,
+        .column-2,
+        .column-3,
+        .column-4,
+        .column-5 {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            flex-direction: column;
+
+            svg {
+                width: 250px;
+                margin: .5em 0;
+            }
+
+            svg:first-child {
+                width: 310px;
+            }
+
+            .skills,
+            .levels-1,
+            .levels-2,
+            .levels-3 {
+                transition: all 1s ease;
+                transform: translateY(25px);
+                -webkit-transform: translateY(25px);
+                opacity: 0;
+
+                &.active {
+                    transform: translateY(0px);
+                    -webkit-transform: translateY(0px);
+                    opacity: 1;
+                }
+            }
+
+            @for $i from 1 through 5 {
+                #skills-#{$i} {
+                    transition-delay: $i * .1s;
+                }
+            }
+
+            @for $i from 6 through 10 {
+                #level-#{$i} {
+                    transition-delay: $i * .1s;
+                }
+            }
+
+            @for $i from 11 through 15 {
+                #level-#{$i} {
+                    transition-delay: $i * .1s;
+                }
+            }
+
+            @for $i from 16 through 20 {
+                #level-#{$i} {
+                    transition-delay: $i * .1s;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1024px) {
+
+    section {
+
+        .jobsContainer {
+
+            .career {
+                padding: 0 2em;
+                text-align: center;
+            }
+
+            .revealContainer {
+                align-items: flex-start;
+                flex-direction: column;
+
+                width: auto;
+
+                .jobs-informations {
+                    flex-direction: row;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    header {
+
+        div {
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    }
+
+    section {
+
+        .jobsContainer {
+
+            .career {
+
+                span {
+                    font-size: 1.2rem;
+                }
+            }
+
+            .revealContainer {
+
+                .jobs-informations {
+
+                    img {
+                        width: 100px;
+                    }
+
+                    .jobs {
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    header {
+
+        div {
+
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    }
+
+    section {
+
+        .jobsContainer {
+            
+            .career {
+                padding: 0 10px;
+            }
+
+            & + h2 {
+                font-size: 1.5rem;
+            }
+        }
+    }
+}
+
+@keyframes opacity {
+
+    from {
+        opacity: 0;
+        transform: translate(0, 20px);
+    }
+    to {
+        opacity: 1;
+    }
+}

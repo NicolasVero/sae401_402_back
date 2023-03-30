@@ -1,0 +1,116 @@
+.loader {
+    /* display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100vh;
+    width: 100%; */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    overflow: hidden;
+    background-color: #FDFDFD;
+
+    .loaderContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        height: 50px;
+        width: 75px;
+        animation: rotation 2s ease infinite;
+        transform-origin: center;
+
+        div {
+            display: flex;
+            justify-content: center;
+
+            height: 100%;
+            width: calc(100% / 3);
+
+            span {
+                height: 10px;
+                width: 10px;
+                border-radius: 5px;
+            }
+
+            &:first-child,
+            &:last-child {
+                align-items: end;
+            }
+
+            &:first-child {
+
+                span {
+                    background-color: #EB5E25;
+                    animation: orange 2s ease infinite;;
+                }
+
+                & + div {
+                    align-items: start;
+
+                    span {
+                        z-index: 1;
+                        background-color: #44358b;
+                        animation: bleu 2s ease infinite;
+                    }
+                }
+            }
+
+            &:last-child {
+
+                span {
+                    background-color: #FBB800;
+                    animation: jaune 2s ease infinite;
+                }
+            }
+        }
+    }
+}
+
+.fondu-out {
+    opacity: 0;
+    transition: .8s;
+}
+
+@keyframes rotation {
+
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(1080deg);
+    }
+}
+
+@keyframes bleu {
+
+    50% {
+        transform: translate(0, 20px);
+    }
+    100% {
+        // transform: scale(300);
+    }
+}
+
+@keyframes orange {
+
+    50% {
+        transform: translate(25px, -20px);
+    }
+}
+
+@keyframes jaune {
+
+    50% {
+        transform: translate(-25px, -20px);
+    }
+}

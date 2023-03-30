@@ -1,0 +1,133 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "Gotham-Black";
+  src: url(../assets/Gotham-Font/Gotham-Black.otf);
+}
+@font-face {
+  font-family: "Gotham-Book";
+  src: url(../assets/Gotham-Font/GothamBook.ttf);
+}
+@font-face {
+  font-family: "Gotham-Light";
+  src: url(../assets/Gotham-Font/Gotham-Light.otf);
+}
+@font-face {
+  font-family: "Gotham-BookItalic";
+  src: url(../assets/Gotham-Font/Gotham-BookItalic.otf);
+}
+@font-face {
+  font-family: "Gotham-Bold";
+  src: url(../assets/Gotham-Font/Gotham-Bold.otf);
+}
+footer {
+  width: 100%;
+  background-color: #202020;
+  position: relative;
+}
+footer .footer-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 2em 0;
+}
+footer .footer-info .footer-wrappers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+footer .footer-info .footer-wrappers ul {
+  list-style-type: none;
+  line-height: 2;
+}
+footer .footer-info .footer-wrappers ul li a {
+  text-decoration: none;
+  color: #FDFDFD;
+  font-family: "Gotham-Light";
+  font-size: 1.2rem;
+  transition: opacity 0.3s ease;
+}
+footer .footer-info .footer-wrappers ul li a:hover {
+  opacity: 0.7;
+}
+footer .footer-info .social-networks a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 20px;
+}
+footer .footer-info .social-networks a svg {
+  fill: #FDFDFD;
+  transition: opacity 0.3s ease;
+}
+footer .footer-info .social-networks a svg:hover {
+  opacity: 0.7;
+}
+footer .footer-info .footer-buttons,
+footer .footer-info .lists,
+footer .footer-info hr {
+  display: none;
+}
+
+@media screen and (max-width: 1024px) {
+  footer .footer-info {
+    justify-content: center;
+    flex-direction: column;
+  }
+  footer .footer-info .footer-wrappers {
+    display: none;
+  }
+  footer .footer-info .footer-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: transparent;
+    border: none;
+    color: #FDFDFD;
+    font-family: "Gotham-Light";
+    font-size: 1.5rem;
+    width: 90%;
+  }
+  footer .footer-info .footer-buttons:after {
+    content: "+";
+    color: #FDFDFD;
+    font-weight: bold;
+  }
+  footer .footer-info .footer-buttons.active:after {
+    content: "−";
+  }
+  footer .footer-info .lists {
+    display: block;
+    background-color: transparent;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    list-style-type: none;
+    width: 80%;
+  }
+  footer .footer-info .lists li a {
+    text-decoration: none;
+    color: #FDFDFD;
+    font-family: "Gotham-Light";
+    font-size: 1.5rem;
+  }
+  footer .footer-info hr {
+    width: 90%;
+    margin: 3em 0;
+    display: block;
+  }
+}
+@media screen and (max-width: 768px) {
+  footer .footer-info .footer-buttons {
+    font-size: 1.5rem;
+  }
+}
+@media screen and (max-width: 480px) {
+  footer .footer-info .footer-buttons {
+    font-size: 1.2rem;
+  }
+  footer .footer-info .lists li a {
+    font-size: 1rem;
+  }
+}
+
+/*# sourceMappingURL=footer.css.map */

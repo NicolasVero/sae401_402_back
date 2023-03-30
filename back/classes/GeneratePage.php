@@ -110,7 +110,7 @@
 
             return "
                 <!DOCTYPE html>
-                <html>
+                <html lang='fr'>
                 <head>
                     <link href='../../styles/popup-style.css' rel='stylesheet'>
                     <link rel='shortcut icon' type='image/png' href='../../img/favicon.png'>

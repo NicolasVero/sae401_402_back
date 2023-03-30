@@ -29,6 +29,7 @@
 
         $dossier = $pages_infos['dossier'];
         $titre   = $pages_infos['titre'];
+        $auteur  = $pages_infos['auteur'];
         $texte   = $pages_infos['contenu'];
         $date    = $pages_infos['date'];
         $id      = $pages_infos['id'];
@@ -59,8 +60,8 @@
                 }
             }
 
-            $requete = $db -> prepare("UPDATE pages SET dossier = ?, titre = ?, contenu = ?, date = ?, url = ? WHERE id = ?");
-            $requete -> execute(array(spaceToDash($_POST['titre']), $_POST['titre'], $texte, $_POST['date'], './back/pages/' . spaceToDash($_POST['titre']), $_POST['id']));  
+            $requete = $db -> prepare("UPDATE pages SET dossier = ?, titre = ?, auteur = ?, contenu = ?, date = ?, url = ? WHERE id = ?");
+            $requete -> execute(array(spaceToDash($_POST['titre']), $_POST['titre'], $_POST['auteur'], $texte, $_POST['date'], './back/pages/' . spaceToDash($_POST['titre']), $_POST['id']));  
 
             include '../classes/GeneratePage.php';
 
@@ -76,6 +77,7 @@
         
             <div id='creer-form-data'>
                 <input class='form-input-text' type='text' name='titre' id='titre' value=$titre placeholder='Titre de la page' required>
+                <input style='height: 30px;' type='text' name='auteur' id='auteur' value=$auteur required>
                 <input style='height: 30px;' type='date' name='date' id='date' value=$date required>
             </div>
 

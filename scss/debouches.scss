@@ -1,0 +1,226 @@
+@import "../scss/variables.scss";
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+section {
+    
+    article {
+        background-color: $bleu;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+
+        svg {
+            display: block;
+        }
+
+        section article svg:first-of-type {
+            margin-top: -1%;
+        }
+
+        h2 {
+            margin: 0;
+            color: $blanc;
+            font-family: "Gotham-Bold", sans-serif;
+            font-size: 2rem;
+            text-align: center;
+            padding: 0 10px;
+        }
+
+        .gridContainer {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(5, 1fr);
+            grid-column-gap: 0px;
+            grid-row-gap: 0px;
+            width: 90%;
+            margin-top: 5em;
+            text-align: justify;
+
+            .pictogrammes {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            
+                opacity: 0;
+                transition: all 1s ease;
+
+                img {
+                    width: 50%;
+                }
+
+                #picto-1 {
+                    grid-area: 1 / 1 / 2 / 2;
+                }
+                
+                #picto-2 {
+                    grid-area: 2 / 2 / 3 / 3;
+                }
+                
+                #picto-3 {
+                    grid-area: 3 / 1 / 4 / 2;
+                }
+                
+                #picto-4 {
+                    grid-area: 4 / 2 / 5 / 3;
+                }
+                
+                #picto-5 {
+                    grid-area: 5 / 1 / 6 / 2;
+                }
+            }
+
+            .descriptions {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            
+                font-family: "Gotham-Light";
+                color: $blanc;
+                opacity: 0;
+                transition: all 1s ease;
+                margin-bottom: 3em;
+
+                span {
+                    font-size: 2rem;
+                    margin: 0 0 1em;
+                }
+
+                p {
+                    font-size: 1.5rem;
+                    line-height: 1.5;
+                }
+            }
+
+            .firstRow,
+            .thirdRow,
+            .fifthRow {
+                transform: translateX(-25px);
+
+                &.active {
+                    transform: translateX(0px);
+                    opacity: 1;
+                }
+            }
+
+            .secondRow,
+            .fourthRow {
+                transform: translateX(25px);
+
+                &.active {
+                    transform: translateX(0px);
+                    opacity: 1;
+                }
+            }
+
+            #communityManager {
+                grid-area: 1 / 2 / 2 / 3;
+            }
+            
+            #motionDesigner {
+                grid-area: 2 / 1 / 3 / 2;
+            }
+            
+            #developpeurWeb {
+                grid-area: 3 / 2 / 4 / 3;
+            }
+            
+            #reaMultimedia {
+                grid-area: 4 / 1 / 5 / 2;
+            }
+            
+            #graphiste {
+                grid-area: 5 / 2 / 6 / 3;
+            }
+        }
+        
+        section article svg:last-of-type {
+            margin-bottom: -1%;
+        }
+    }
+}
+
+@media screen and (max-width: 1024px) {
+
+    section {
+
+        article {
+
+            .gridContainer {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(5, 1fr);
+
+                .pictogrammes {
+                    display: none;
+                }
+
+                #communityManager {
+                    grid-area: 1 / 1 / 2 / 2;
+                }
+                
+                #motionDesigner {
+                    grid-area: 2 / 1 / 3 / 2;
+                }
+                
+                #developpeurWeb {
+                    grid-area: 3 / 1 / 4 / 2;
+                }
+                
+                #reaMultimedia {
+                    grid-area: 4 / 1 / 5 / 2;
+                }
+                
+                #graphiste {
+                    grid-area: 5 / 1 / 6 / 2;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    section {
+
+        article {
+
+            .gridContainer {
+                margin-top: 5em;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    section {
+
+        article {
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .gridContainer {
+                margin-top: 5em;
+
+                .descriptions {
+
+                    span {
+                        font-size: 1.5rem;
+                    }
+
+                    p {
+                        font-size: 1.5rem;
+                    }
+                }
+            }
+        }
+    }
+}
