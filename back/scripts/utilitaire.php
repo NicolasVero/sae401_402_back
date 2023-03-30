@@ -54,7 +54,7 @@ function getTinyContenu($titre) {
         $tiny = substr($tiny, 0, strlen($tiny) - 4);
     }
 
-    $tiny = str_replace("<img", "&lt;", $tiny);
+    $tiny = str_replace("<img", "&lt;img", $tiny);
     
     $tiny .= "...</p>";
     
