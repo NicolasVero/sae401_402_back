@@ -17,7 +17,7 @@
 
         include 'verif_session.php';     
         include 'connect_bdd.php';
-        include 'utilitaire.php';
+        include_once 'utilitaire.php';
 
         $requete = $db -> prepare("SELECT * FROM pages WHERE id = ?");
         if(isset($_POST['id']))
@@ -38,9 +38,6 @@
             if($_POST['titre'] != $dossier) {
                 rename("../pages/" . $dossier, "../pages/" . spaceToDash($_POST['titre']));
             }
-
-            echo "./back/pages/" . spaceToDash($_POST['titre']);
-
     
             $requete = $db -> prepare("SELECT * FROM pages WHERE id = ?");
             if(isset($_POST['id']))
@@ -69,7 +66,8 @@
 
             $gp = new GeneratePage($_POST['titre'], "index", $texte);
             $gp->generateHTMLFile();
-
+            getTinyContenu(spaceToDash($_POST['titre']));
+            
             header("Location: ../accueil.php");
         }
 

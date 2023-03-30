@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 23 mars 2023 à 11:34
--- Version du serveur : 10.4.27-MariaDB
--- Version de PHP : 8.2.0
+-- Généré le : lun. 27 mars 2023 à 18:38
+-- Version du serveur : 10.4.22-MariaDB
+-- Version de PHP : 8.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,6 +33,7 @@ CREATE TABLE `pages` (
   `titre` varchar(255) NOT NULL,
   `contenu` text NOT NULL,
   `tiny_contenu` varchar(255) NOT NULL,
+  `galerie` text NOT NULL,
   `type` varchar(10) NOT NULL,
   `affiche` tinyint(1) NOT NULL,
   `url` varchar(255) NOT NULL,
@@ -40,7 +41,7 @@ CREATE TABLE `pages` (
   `style` varchar(255) NOT NULL,
   `date` date NOT NULL,
   `auteur` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Index pour les tables déchargées
@@ -60,7 +61,7 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT pour la table `pages`
 --
 ALTER TABLE `pages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=177;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=276;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

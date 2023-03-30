@@ -1,7 +1,7 @@
 <?php
 
     include 'connect_bdd.php';
-    include 'utilitaire.php';
+    include_once 'utilitaire.php';
 
     $schema = "DELETE FROM pages WHERE id = ?";
     $supprimerPage = $db -> prepare($schema);
