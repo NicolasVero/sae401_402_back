@@ -1,0 +1,35 @@
+.popup-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .9);
+    width: 100%;
+    height: 100vh;
+    z-index: 10;
+    display: none;
+}
+
+.popup-image span {
+    position: absolute;
+    top: 1%;
+    right: 1%;
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.popup-image img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    max-height: 700px;
+    object-fit: contain;
+}
+
+.gallery-images:hover {
+    cursor: pointer;
+}
