@@ -1,4 +1,0 @@
-Options All -Indexes
-
-ErrorDocument 403 /mmi2/SAE401/erreur403.html
-ErrorDocument 404 /mmi2/SAE401/erreur404.html
