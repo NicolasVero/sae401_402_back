@@ -1,13 +1,13 @@
-# sae401_402_back
+sae401_402_back
 
-Ce dépôt contient une partie d'un projet que nous avions mené en deuxième année de BUT MMI. 
-Nous devions refaire l'entièreté de la communication de l'IUT (logo / identité visuelle, site, etc). 
+This repository contains a part of a project we worked on during the second year of our BUT MMI program.
+Our task was to completely overhaul the IUT’s communication (logo, visual identity, website, etc.).
 
-En ce qui concerne le site, nous étions deux à nous partager le travail. Pour ma part, j'avais la charge de créer le back-end de notre site, 
-qui devais permettre aux administrateurs de pouvoir facilement créer de nouvelles pages, créer des actualités, mettre en avant des projets, etc.
+Regarding the website, the workload was split between two of us. My responsibility was to develop the back-end of the website,
+which needed to allow administrators to easily create new pages, publish news, highlight projects, and more.
 
-> [!NOTE]
-> Lien vers le pdf d'explication du fonctionnement du back : https://www.nicolas-vero.fr/documents/doc_back_401.pdf
+	[!NOTE]
+Link to the PDF explaining the back-end functionality: https://www.nicolas-vero.fr/documents/doc_back_401.pdf
 
-Ce projet se base sur TinyMCE, un outil JavaScript permettant aux utilisateurs de faire de la saisie de texte directement depuis un site.   
-Ce projet a été réalisé à l'aide des langages PHP, SQL et JavaScript.
+This project is based on TinyMCE, a JavaScript tool that allows users to input text directly through a website.
+The back-end was implemented using PHP, SQL, and JavaScript.
