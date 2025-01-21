@@ -7,7 +7,7 @@ Regarding the website, the workload was split between two of us. My responsibili
 which needed to allow administrators to easily create new pages, publish news, highlight projects, and more.
 
 > [!NOTE]
-> Link to the PDF explaining the back-end functionality (Fr): https://www.nicolas-vero.fr/documents/doc_back_401.pdf
+> Link to the PDF explaining the back-end functionality (french): https://www.nicolas-vero.fr/documents/doc_back_401.pdf
 
 This project is based on TinyMCE, a JavaScript tool that allows users to input text directly through a website.
 The back-end was implemented using PHP, SQL, and JavaScript.
